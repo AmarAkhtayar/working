@@ -1,0 +1,272 @@
+hr {
+  margin: 40px auto;
+  width: calc(100% - 32px);
+
+}
+
+.grid-margin {
+  margin: 0 16px;
+}
+
+// #logo {
+//   position: absolute;
+//   top: 16px;
+//   width: 52px;
+//   left: calc(50vw - 26px);
+//   pointer-events: all;
+// }
+
+.content {
+  padding-bottom: 200px;
+  max-width: 1004px;
+  margin: 0 auto;
+  position: relative;
+
+  .preference-button {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    height: 40px;
+    z-index: 2;
+    flex-direction: row;
+    width: 128px;
+
+    svg {
+      margin-left: 0;
+      margin-right: 8px;
+    }
+  }
+
+  // .welcome {
+  //   margin-top: 120px;
+  //   margin-bottom: 8px;
+  //   margin-left: 16px;
+  // }
+  .page-title {
+    margin-top: 52px;
+    margin-bottom: 36px;
+    padding: 0 16px;
+  }
+
+  .carousel {
+
+    .head {
+      margin-bottom: 16px;
+    }
+
+    myCarousel {
+      // width: auto;
+      margin-left: 0px;
+
+      .cards {
+        margin-left: 12px;
+      }
+
+      .trending-card {
+        border-radius: 4px;
+        position: relative;
+        width: 253px;
+        height: 174px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        .black-mist {
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          position: absolute;
+          background: linear-gradient(180deg, rgba(47, 48, 59, 0) 56.77%, #2F303B 100%);
+          border-radius: 4px;
+        }
+
+        .card-title {
+          font-family: 'degular', serif;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 20px;
+          color: white;
+          position: absolute;
+          bottom: 12px;
+          left: 12px;
+        }
+
+
+        .like {
+          width: 32px;
+          min-width: 32px;
+          height: 32px;
+
+          padding: 8px;
+          box-sizing: border-box;
+
+          background-color: white;
+          border-radius: 16px;
+          position: absolute;
+          top: 8px;
+          right: 8px;
+
+        }
+
+        .shopping-card {
+          height: 28px;
+          width: 60px;
+          position: absolute;
+          right: 8px;
+          bottom: 8px;
+
+          svg {
+            width: 17px;
+            height: 20px;
+            margin-left: 8px;
+            margin-top: -3px;
+          }
+
+          p {
+            font-weight: 300;
+            line-height: 28px;
+          }
+        }
+      }
+    }
+  }
+
+  // .head {
+  //   app-user-follow {
+  //     display: block;
+  //     margin-bottom: 12px;
+  //     width: 100%;
+  //   }
+  // }
+}
+
+@media (min-width: 752px) {
+  #logo {
+    display: none;
+  }
+
+  .content {
+    .carousel {
+      myCarousel {
+        .trending-card {
+          width: 310px;
+
+          img {
+            width: 310px;
+            height: 225px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// app-nav {
+//   box-shadow: 0px -2px 32px rgba(0, 0, 0, 0.15);
+//   height: 50px;
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+// }
+.desktop {
+  display: none;
+}
+
+@media (min-width: 600px) {
+
+  // app-nav {
+  //   height: 0;
+  // }
+  #logo {
+    display: none;
+  }
+
+  .content {
+    .preference-button {
+      // top: -6px;
+      position: absolute;
+      z-index: 0;
+    }
+  }
+
+}
+
+@media(min-width: 1036px) {
+  hr {
+    width: 100%;
+    margin: 64px 0px;
+  }
+
+  .not-desktop {
+    display: none;
+  }
+
+  .desktop {
+    display: flex;
+    height: 40px;
+    width: 90px;
+    line-height: 40px;
+  }
+
+  .head {
+    align-items: center;
+
+    // app-user-follow {
+    //   max-width: 385px;
+    // }
+
+    .secondary-social {
+      margin-bottom: 19px;
+    }
+  }
+
+
+
+  .grid-margin {
+    margin: 0 0;
+  }
+
+  .content {
+
+    .welcome {
+      margin-left: 0px;
+    }
+
+    .preference-button {
+      margin-top: 6px;
+      right: 0;
+    }
+
+    .page-title {
+      padding: 0;
+      margin-top: 68px;
+      margin-bottom: 40px;
+    }
+
+    .carousel {
+      .trendings {
+        display: flex;
+        justify-content: space-between;
+
+        .trending-card {
+          width: 323px;
+          height: 217px;
+        }
+
+      }
+
+      .head {
+        margin-bottom: 24px;
+      }
+
+      myCarousel {
+        .cards {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+image: node:alpine
+
+before_script:
+  - npm i -g firebase-tools
+
+deploy-website:
+  stage: deploy
+  script:
+    - yarn
+    - yarn build --prod
+    - firebase deploy --only hosting --token $FIREBASE_TOKEN --project $FIREBASE_PROJECT
+  only:
+    - master
+    - deployment-prep
+  environment:
+    name: production
+    url: https://swapmeals.com

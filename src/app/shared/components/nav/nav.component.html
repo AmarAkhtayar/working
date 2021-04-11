@@ -1,0 +1,101 @@
+<!-- <img src="../../assets/temp/bag.svg" role="button" alt=""> -->
+<!-- <img src="../../assets/temp/test.png" alt=""> -->
+<div>
+    <nav class="hide mobile" [ngClass]="{'shadow' : shadow}">
+        <div class="option bowl icon" role="button" [routerLink]="['/inspiration']">
+
+            <svg [ngClass]="{'active' : page == 'inspiration'}" width="30" height="26" viewBox="0 0 30 26" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 11.9367L15.1709 1L28.8418 11.9367" stroke="#2F303B" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M5.44933 8.8988V22.2659C5.44933 22.2659 5.51009 25.0001 8.18351 25.0001C10.8569 25.0001 18.8164 25.0001 22.462 25.0001C22.462 25.0001 25.1962 24.9393 25.1962 22.2659C25.1962 19.5925 25.1962 12.2406 25.1962 8.8988"
+                    stroke="#2F303B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M18.8164 25.0001V18.0127C18.8164 18.0127 18.8164 15.2786 16.0822 15.2786C14.5633 15.2786 14.5633 15.2786 14.5633 15.2786C14.5633 15.2786 11.8291 15.2786 11.8291 18.0127C11.8291 20.4431 11.8291 23.6836 11.8291 25.0001"
+                    stroke="#2F303B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
+        </div>
+        <div class="option magnifier icon" role="button" [routerLink]="['/search']">
+            <svg [ngClass]="{'active' : page == 'search'}" width="25" height="26" viewBox="0 0 25 26" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12.5383 15.7692L20.3752 23.6699C21.1028 24.4035 22.2892 24.4063 23.0203 23.6762V23.6762C23.7531 22.9445 23.7484 21.7568 23.0098 21.031L15.3076 13.4615"
+                    stroke="#2F303B" stroke-width="2" />
+                <path
+                    d="M8.9267 16.8296C13.3045 16.8296 16.8534 13.2861 16.8534 8.91482C16.8534 4.54359 13.3045 1 8.9267 1C4.5489 1 1 4.54359 1 8.91482C1 13.2861 4.5489 16.8296 8.9267 16.8296Z"
+                    stroke="#2F303B" stroke-width="2" />
+            </svg>
+        </div>
+        <div [routerLink]="['/my-ingredient-list']" *ngIf="!cardIsFilled()" [ngClass]="{'shadow' : shadow}" class="card"
+            role="button">
+            <svg [ngClass]="{'active' : page == 'card'}" width="40" height="46" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 1.5L1.96289 11.8186C6.72878 21.5269 10.7886 37.3396 12.2228 44.0325L38.038 36.9719C35.302 23.4685 28.5671 7.5309 25 1.5Z" stroke="#2F303B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.4999 14.5L22.7024 11.8193M20.4999 23.5L26.9999 21M23.4999 33L30.4249 30.7875M9 18L11.5013 19.0418V13" stroke="#2F303B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 26.5L14.1429 28L15 22.5" stroke="#2F303B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 35.7931L16.5882 37L18 32" stroke="#2F303B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+
+        </div>
+        <!-- <div [routerLink]="['/my-ingredient-list']" *ngIf="cardIsFilled()" [ngClass]="{'shadow' : shadow}" class="card" role="button">
+            <svg [ngClass]="{'active' : page == 'card'}"width="51" height="42" viewBox="0 0 51 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M16.3125 19C16.3125 19 14.6613 16.3457 17.3106 15.284L20.4897 14.2223C20.4897 14.2223 22.6091 13.1605 23.6688 16.8766L24.1987 18.4691M18.7407 14.8024L17.6801 11.6173M26.785 18.5185C26.785 15.3333 28.92 13.2099 31.5536 13.2099C34.1873 13.2099 36.3223 15.3333 36.3223 18.5185M17.5808 11.7255C17.5808 11.7255 20.5918 11.921 20.8361 9.57662C21.0804 7.23225 19.3355 6.84502 19.3355 6.84502C19.3355 6.84502 20.0137 5.43714 18.9168 4.06044C17.996 2.8546 16.0741 3.10071 16.0741 3.10071C16.0741 3.10071 15.3238 0.38282 13.2877 1.12998C10.9973 1.97046 12.391 4.50863 12.391 4.50863C12.391 4.50863 11.0318 5.50718 11.379 7.19777C11.6961 8.74199 12.8796 9.09396 12.8796 9.09396C12.8796 9.09396 12.391 11.7255 14.1708 12.4853C16.1163 13.1951 17.5808 11.7255 17.5808 11.7255ZM36.1097 8.44992C36.1097 8.44992 31.554 7.87914 32.0838 13.1878C37.3823 13.1878 36.1097 8.44992 36.1097 8.44992Z"
+                    stroke="#2F303B" stroke-width="2" stroke-miterlimit="10" />
+                <path
+                    d="M6.70709 18.4922H43.9379L39.3223 37.5C39.3223 37.5 38.9318 40.5714 35.284 40.5714C24.6302 40.5714 25.8223 40.5714 15.3609 40.5714C11.779 40.5714 11.3223 37.5 11.3223 37.5L6.70709 18.4922Z"
+                    stroke="#2F303B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M10.3226 18.0001L5.87829 5.7992" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M40.3223 18L44.7664 5.7995" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M33.4667 25.3361V34.0515" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M25.3225 25.3361V34.0515" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M17.1782 25.3361V34.0515" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M46.3223 18.5H4.32227" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+
+        </div> -->
+        <div [routerLink]="['/favourites']" class="option icon like" role="button">
+            <svg [ngClass]="{'active' : page == 'favourites'}" width="18" height="17" viewBox="0 0 18 17" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9.00258 3.40765C8.74393 3.31762 8.59506 3.08939 8.40809 2.91547C7.76973 2.32165 7.04322 1.90077 6.18665 1.724C4.48395 1.3726 3.00401 1.74721 1.86874 3.12363C1.39258 3.70094 1.1252 4.37967 1.03858 5.13641C0.842619 6.84837 1.40579 8.31497 2.44094 9.63691C3.0961 10.4736 3.8836 11.1826 4.68343 11.872C5.94926 12.9632 7.29393 13.9534 8.69183 14.8704C8.99599 15.0699 9.00922 15.07 9.31331 14.8704C10.7109 13.9529 12.0542 12.9614 13.3224 11.8729C14.0602 11.2396 14.7819 10.5833 15.4073 9.835C16.1811 8.90924 16.7557 7.87939 16.9368 6.6663C16.9963 6.10374 17.0499 5.62252 16.9196 4.84833C16.6892 3.63604 16.0158 2.7418 14.965 2.1242C14.4007 1.7925 13.7855 1.63477 13.1265 1.60752C11.6193 1.54521 10.3745 2.09882 9.33554 3.16418C9.24247 3.25961 9.14816 3.35175 9.02475 3.40765"
+                    stroke="#2F303B" stroke-width="1.3" stroke-miterlimit="10" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </div>
+        <a [routerLink]="['/me']">
+            <img width="24px" height="24px" role="button" [ngClass]="{'active' : page == 'profile'}" class="profile"
+                src="assets/fleur.png" alt="Profile picture" loading="lazy"></a>
+    </nav>
+    <div *ngIf="page != 'detail' && page != 'inspiration'" class="top-mobile hide">
+        <img src="assets/logo-swapmeals-bg.svg" [routerLink]="['/inspiration']" alt="logo" class="logo">
+    </div>
+    <nav class="text-nav">
+        <div class="nav-wrapper">
+            <!-- <p [routerLink]="['']" class="logo"><b>Logo</b></p> -->
+            <img [routerLink]="['/inspiration']" src="assets/logo-swapmeals-bg.svg" class="logo" alt="">
+            <!-- <div class="search-area"></div> -->
+            <app-search-bar [top]="true" class="search-area sb-big"></app-search-bar>
+            <div class="right">
+                
+                <p [ngClass]="{'active' : page == 'search'}" class="" [routerLink]="['/search']" i18n="@@categories">Browse recipes</p> 
+                <!-- sb-small -->
+                <!-- <p [routerLink]="['/inspiration']">Recipes</p> -->
+                <p [ngClass]="{'active' : page == 'card'}" [routerLink]="['/my-ingredient-list']" i18n="@@grocery-list">Grocery list</p>
+                <p [ngClass]="{'active' : page == 'favourites'}" [routerLink]="['/favourites']" i18n="@@my-favourites">My favourites</p>
+                <a [routerLink]="['/login']" >
+                    <img loading="lazy" width="40px" height="40px" role="button" [ngClass]="{'active' : page == 'profile'}" class=""
+                        src="assets/fleur.png" alt="profile icon"></a>
+
+            </div>
+        </div>
+    </nav>
+</div>

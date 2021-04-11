@@ -1,0 +1,48 @@
+
+
+<main>
+    <div [routerLink]="['/me']" class="icon round back">
+        <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 1L1 5.09979L5 9" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12.5004 5.12533L1.83374 5.12533" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <h2 class="grid-margin page-title" i18n="@@my-not">My notifications</h2>
+    <!-- <mat-slide-toggle>test</mat-slide-toggle> -->
+
+    <div class="option head">
+        <h3 i18n="@@push-not">Push notifications</h3>
+        <div class="switch">
+            <input id="switch-all"  [checked]="notificationsEnabled" (change)="preferenceChange($event)" type="checkbox" class="switch-input" />
+            <label for="switch-all" class="switch-label">Switch</label>
+        </div>
+    </div>
+    <hr>
+    <p class="subscription" i18n="@@subscription">You are currently subscribed to receive the following emails at <span
+            style="color: #5DAB24">jochem@verdify.tech</span></p>
+    <hr>
+    <div class="option head">
+        <h3 i18n="@@recom-not">Recipe recommendations</h3>
+        <div class="switch">
+            <input (change)="preferenceChange($event)" id="switch-rec" [checked]="true" type="checkbox" class="switch-input" />
+            <label for="switch-rec" class="switch-label" i18n="@@switch">Switch</label>
+        </div>
+    </div>
+    <hr>
+    <div class="option head">
+        <h3 i18n="@@prod-up-not">Product updates</h3>
+        <div class="switch">
+            <input (change)="preferenceChange($event)" id="switch-produp" [checked]="true" type="checkbox" class="switch-input" />
+            <label for="switch-produp" class="switch-label" i18n="@@switch">Switch</label>
+        </div>
+    </div>
+    <hr>
+    <div class="option head">
+        <h3 i18n="@@prom-updates-not">Promotional updates</h3>
+        <div class="switch">
+            <input (change)="preferenceChange($event)" id="switch-promup"  [checked]="true" type="checkbox" class="switch-input" />
+            <label for="switch-promup" class="switch-label" i18n="@@switch">Switch</label>
+        </div>
+    </div>
+</main>
+<app-nav [shadow]='true'></app-nav>

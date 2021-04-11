@@ -1,0 +1,27 @@
+{
+  "hosting": {
+    "public": "dist/verdify-recipe",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source" : "/",
+        "destination" : "/en",
+        "type" : 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/en**",
+        "destination": "/en-US/index.html"
+      },
+      {
+        "source": "/nl**",
+        "destination": "/nl/index.html"
+      }
+    ]
+  }
+}

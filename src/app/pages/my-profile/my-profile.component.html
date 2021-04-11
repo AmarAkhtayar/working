@@ -1,0 +1,36 @@
+<div [routerLink]="['/me']" class="icon round back">
+    <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 1L1 5.09979L5 9" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M12.5004 5.12533L1.83374 5.12533" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</div>
+
+<div class="head grid-margin page-title">
+    <h2>My profile</h2>
+    <p style="color: #4E8B43" class="clickable-text">Edit</p>
+</div>
+
+<form class="grid-margin" action="" #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+    <fieldset >
+        <div class="info-part">
+            <label >First name</label>
+            <input type="text" name="firstname" [ngModel]="firstName">
+        </div>
+        <div class="info-part">
+            <label>Last name</label>
+            <input type="text" name="lastname" [ngModel]="lastName">
+        </div>
+        <div class="info-part">
+            <label>E-mail</label>
+            <input type="text" name="email" ngModel>
+        </div>
+        <div class="info-part">
+            <label>Password</label>
+            <input type="text" name="password" ngModel>
+        </div>
+    </fieldset>
+    <button type="submit">submit</button>
+
+</form>
+
+<app-nav [shadow]="true"></app-nav>

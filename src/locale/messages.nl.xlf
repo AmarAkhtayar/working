@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US">
+    <body>
+      <trans-unit id="categories">
+        <source>Browse recipes</source>
+        <target>Zoeken</target>
+      </trans-unit>
+      <trans-unit id="grocery-list">
+        <source>Grocery list</source>
+        <target>Boodschappenlijst</target>
+      </trans-unit>
+      <trans-unit id="my-favourites">
+        <source>My favourites</source>
+        <target>Mijn favorieten</target>
+      </trans-unit>
+      <trans-unit id="nr-recipes">
+        <source>101 recipes</source>
+        <target>101 recepten</target>
+      </trans-unit>
+      <trans-unit id="nr-followers">
+        <source>52K followers</source>
+        <target>52k volgers</target>
+      </trans-unit>
+      <trans-unit id="sweet">
+        <source>Sweet</source>
+        <target>Zoet</target>
+      </trans-unit>
+      <trans-unit id="sour">
+        <source>Sour</source>
+        <target>Zuur</target>
+      </trans-unit>
+      <trans-unit id="salt">
+        <source>Salt</source>
+        <target>Zout</target>
+      </trans-unit>
+      <trans-unit id="bitter">
+        <source>Bitter</source>
+        <target>Bitter</target>
+      </trans-unit>
+      <trans-unit id="umami">
+        <source>Umami</source>
+        <target>Umami</target>
+      </trans-unit>
+      <trans-unit id="spicy">
+        <source>Spicy</source>
+        <target>Pittig</target>
+      </trans-unit>
+      <trans-unit id="mint">
+        <source>Mint</source>
+        <target>Fris</target>
+      </trans-unit>
+      <trans-unit id="aria-navig-recipe">
+        <source>Go to other recipe</source>
+        <target>Ga naar ander recept</target>
+      </trans-unit>
+      <trans-unit id="sponsored">
+        <source>Sponsored</source>
+        <target>Gesponsord</target>
+      </trans-unit>
+      <trans-unit id="add">
+        <source>Add</source>
+        <target>+ lijst</target>
+      </trans-unit>
+      <trans-unit id="time-prep">
+        <source>35 min. preparation</source>
+        <target>35 min. voorbereiding</target>
+      </trans-unit>
+      <trans-unit id="see-all">
+        <source>See all</source>
+        <target>Alles</target>
+      </trans-unit>
+      <trans-unit id="search-bar">
+        <source>Search bar</source>
+        <target>Zoekbalk</target>
+      </trans-unit>
+      <trans-unit id="my-recipes">
+        <source>My recipes</source>
+        <target>Mijn recepten</target>
+      </trans-unit>
+      <trans-unit id="aria-go-back">
+        <source>Go back to recipe overview</source>
+        <target>Ga terug naar receptenoverzicht</target>
+      </trans-unit>
+      <trans-unit id="aria-print-recipe">
+        <source>Print this recipe</source>
+        <target>Print deze pagina</target>
+      </trans-unit>
+      <trans-unit id="aria-share">
+        <source>Share this recipe</source>
+        <target>Deel dit recept</target>
+      </trans-unit>
+      <trans-unit id="aria-whatsapp">
+        <source>Share recipe via whatsapp</source>
+        <target>Deel dit recept via whatsapp</target>
+      </trans-unit>
+      <trans-unit id="aria-copy">
+        <source>Copy link of this recipe</source>
+        <target>Kopieer de link van dit recept</target>
+      </trans-unit>
+      <trans-unit id="aria-fav">
+        <source>Mark recipe as favorite</source>
+        <target>Sla recept op als favoriet</target>
+      </trans-unit>
+      <trans-unit id="aria-prev-img">
+        <source>Show previous image</source>
+        <target>Laat vorige afbeelding zien</target>
+      </trans-unit>
+      <trans-unit id="photo-grapher">
+        <source>Photo Grapher</source>
+        <target>Foto graaf</target>
+      </trans-unit>
+      <trans-unit id="aria-next">
+        <source>Show next image</source>
+        <target>Laat volgende afbeelding zien</target>
+      </trans-unit>
+      <trans-unit id="opinion-title">
+        <source>Share your opinion</source>
+        <target>Deel je mening</target>
+      </trans-unit>
+      <trans-unit id="ask-opinion">
+        <source>Did you like this recipe?<x id="LINE_BREAK" ctype="lb" equiv-text=" this recipe?&lt;br&gt;&amp;#xD;&amp;#xA;  "/> Indicate how many stars you think it is worth. </source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="thank-you">
+        <source>Thank you!</source>
+        <target>Dankje!</target>
+      </trans-unit>
+      <trans-unit id="helped-others">
+        <source>On behalf of many others who are looking for recipes.<x id="LINE_BREAK" ctype="lb" equiv-text="          recipes"/></source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="my-opinion">
+        <source>This is my opinion</source>
+        <target>Dit vind ik</target>
+      </trans-unit>
+      <trans-unit id="close">
+        <source>Close</source>
+        <target>Sluiten</target>
+      </trans-unit>
+      <trans-unit id="share-cooking-skills">
+        <source>Share your cooking skills with others</source>
+        <target>Deel je kookkunsten met anderen</target>
+      </trans-unit>
+      <trans-unit id="upload-photo">
+        <source>Your photo will be added to this recipe so others can see it.</source>
+        <target>Jouw foto wordt toegevoegd aan dit recept zodat anderen deze ook kunnen zien</target>
+      </trans-unit>
+      <trans-unit id="photo-library">
+        <source>Photo library</source>
+        <target>Foto's</target>
+      </trans-unit>
+      <trans-unit id="photographer-name">
+        <source>What is your (photographer) name?</source>
+        <target>Wat is jouw (fotograaf) naam?</target>
+      </trans-unit>
+      <trans-unit id="succes-title">
+        <source>On behalf of many others who are looking for recipes, thank you!</source>
+        <target>Namens vele anderen die op zoek zijn naar recepten, bedankt!</target>
+      </trans-unit>
+      <trans-unit id="sucess-text">
+        <source>Once your photo is approved we will add it to this recipe.</source>
+        <target>Zodra de foto is goedgekeurd, wordt deze toegevoegd aan het recept.</target>
+      </trans-unit>
+      <trans-unit id="success-thnx">
+        <source>Thank you for sharing and bon apetit!</source>
+        <target>Bedankt voor het delen en bon apetit!</target>
+      </trans-unit>
+      <trans-unit id="went-wrong">
+        <source>Oops, it looks like something went wrong.</source>
+        <target>Oeps, er ging iets fout</target>
+      </trans-unit>
+      <trans-unit id="please-try-again">
+        <source>Please try again</source>
+        <target>Probeer het nog eens</target>
+      </trans-unit>
+      <trans-unit id="close-window">
+        <source>Close this window, refresh the webpage, and click the share button again.</source>
+        <target>Sluit de pop up en klik nogmaals op de deelknop</target>
+      </trans-unit>
+      <trans-unit id="cookmode-how-to-make">
+        <source>Cookmode - How to make</source>
+        <target>Kookmodus - Hoe maak je</target>
+      </trans-unit>
+      <trans-unit id="step">
+        <source>Step <x id="INTERPOLATION" equiv-text="&amp;#xD;&amp;#xA;                &lt;div cl"/></source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="finished">
+        <source>Finished?</source>
+        <target>Klaar?</target>
+      </trans-unit>
+      <trans-unit id="picture-recipe-alt">
+        <source>picture of this recipe</source>
+        <target>Foto van dit recept</target>
+      </trans-unit>
+      <trans-unit id="ingredients">
+        <source>Ingredients (<x id="INTERPOLATION" equiv-text="e-total&quot;&gt;Total time: {{recipe"/>)</source>
+        <target>Ingrediënten (<x id="INTERPOLATION" equiv-text="e-total&quot;&gt;Total time: {{recipe"/>)</target>
+      </trans-unit>
+      <trans-unit id="amount-of-servings">
+        <source>Select the number of servings</source>
+        <target>Selecteer het aantal porties</target>
+      </trans-unit>
+      <trans-unit id="aria-min-serving">
+        <source>minus one serving</source>
+        <target>portie min een</target>
+      </trans-unit>
+      <trans-unit id="aria-plus-serving">
+        <source>Add one serving</source>
+        <target>portie plus een</target>
+      </trans-unit>
+      <trans-unit id="persons">
+        <source><x id="INTERPOLATION" equiv-text="s&quot; role=&quot;button&quot;&amp;#xD;"/> persons</source>
+        <target><x id="INTERPOLATION" equiv-text="s&quot; role=&quot;button&quot;&amp;#xD;"/> porties</target>
+      </trans-unit>
+      <trans-unit id="add-selection-to-list">
+        <source>Add selection to my list</source>
+        <target>Voeg selectie toe aan mijn lijst</target>
+      </trans-unit>
+      <trans-unit id="preparation">
+        <source>Preparation</source>
+        <target>Bereiding</target>
+      </trans-unit>
+      <trans-unit id="aria-cookmode">
+        <source>Enter cookmode</source>
+        <target>Start kookmodus</target>
+      </trans-unit>
+      <trans-unit id="start-preparation">
+        <source>Start preparation</source>
+        <target>Start bereiding</target>
+      </trans-unit>
+      <trans-unit id="finished-photo">
+        <source>Finished? Add a photo of your result!</source>
+        <target>Klaar? Deel een foto van je resultaat!</target>
+      </trans-unit>
+      <trans-unit id="recipe-rating">
+        <source>Recipe&apos;s rating</source>
+        <target>Recept score</target>
+      </trans-unit>
+      <trans-unit id="share-review">
+        <source>Share your review</source>
+        <target>Deel je ervaring</target>
+      </trans-unit>
+      <trans-unit id="taste-profile">
+        <source>Taste Profile</source>
+        <target>Smaakprofiel</target>
+      </trans-unit>
+      <trans-unit id="cookware">
+        <source>Cookware</source>
+        <target>Kookspullen</target>
+      </trans-unit>
+      <trans-unit id="allergens">
+        <source>Allergens</source>
+        <target>Allergenen</target>
+      </trans-unit>
+      <trans-unit id="alergic-profile-trigger">
+        <source>Do you want to avoid specific food types? Set up your Verdify ID to fully tailor every recipe to your needs and preferences. </source>
+        <target>Wil je specifieke ingrediënten vermijden? Maak een Verdify ID aan om je recepten aan te passen aan jouw voorkeuren.</target>
+      </trans-unit>
+      <trans-unit id="adjust-my-profile">
+        <source>Adjust my profile</source>
+        <target>Pas mijn profiel aan</target>
+      </trans-unit>
+      <trans-unit id="my-verdify-id">
+        <source>My Verdify ID</source>
+        <target>Mijn Verdify ID</target>
+      </trans-unit>
+      <trans-unit id="nut-value-person">
+        <source>Nutritional value per person</source>
+        <target>Voedingswaarde per persoon</target>
+      </trans-unit>
+      <trans-unit id="energy">
+        <source>Energy</source>
+        <target>Energie</target>
+      </trans-unit>
+      <trans-unit id="protein">
+        <source>Protein</source>
+        <target>Eiwit</target>
+      </trans-unit>
+      <trans-unit id="fat">
+        <source>Fat</source>
+        <target>Vet</target>
+      </trans-unit>
+      <trans-unit id="sat-fat">
+        <source>Saturated fat</source>
+        <target>Verzadigd vet</target>
+      </trans-unit>
+      <trans-unit id="unsat-fat">
+        <source>Unsaturated fat</source>
+        <target>Onverzadigd vet</target>
+      </trans-unit>
+      <trans-unit id="carbs">
+        <source>Carbohydrates</source>
+        <target>Koolhydraten</target>
+      </trans-unit>
+      <trans-unit id="fibers">
+        <source>Fibers</source>
+        <target>Vezels</target>
+      </trans-unit>
+      <trans-unit id="disclaimer-title">
+        <source>Disclaimer</source>
+        <target>Disclaimer</target>
+      </trans-unit>
+      <trans-unit id="recom-recipes">
+        <source>Recommended recipes</source>
+        <target>Aanbevolen recepten</target>
+      </trans-unit>
+      <trans-unit id="all">
+        <source>All</source>
+        <target>Alles</target>
+      </trans-unit>
+      <trans-unit id="aria-more">
+        <source>View more recipes</source>
+        <target>Bekijk meer recepten</target>
+      </trans-unit>
+      <trans-unit id="more">
+        <source>More</source>
+        <target>Meer</target>
+      </trans-unit>
+      <trans-unit id="find-more-recipes">
+        <source>Find more recipes</source>
+        <target>Vind meer recepten</target>
+      </trans-unit>
+      <trans-unit id="time-cook">
+        <source>Cooking time: <x id="INTERPOLATION" equiv-text="                 &lt;/svg&gt;"/> min</source>
+        <target>Kooktijd: <x id="INTERPOLATION" equiv-text="                 &lt;/svg&gt;"/> min</target>
+      </trans-unit>
+      <trans-unit id="time-total">
+        <source>Total time: <x id="INTERPOLATION" equiv-text="        &lt;div *ngIf=&quot;s"/> min</source>
+        <target>Totale tijd: <x id="INTERPOLATION" equiv-text="        &lt;div *ngIf=&quot;s"/> min</target>
+      </trans-unit>
+      <trans-unit id="disclaimer">
+        <source>De foto op de receptkaart kan afwijken van uw resultaat omdat het recept aan uw profiel is aangepast. Ondanks zorgvuldige selectie kan het voorkomen dat er voedingsmiddelen op de receptkaart worden genoemd die niet binnen uw profiel passen of dat er voedingsmiddelen worden genoemd die ongewenste allergenen bevatten. Controleer daarom de ingrediëntenlijst op de receptkaart. Bij vragen kunt u contact opnemen met Verdify.</source>
+        <target>TODO</target>
+      </trans-unit>
+      <trans-unit id="find-del-healthy-recipes">
+        <source>Find delicious and healthy recipes</source>
+        <target>Vind heerlijke gezonde recepten</target>
+      </trans-unit>
+      <trans-unit id="tips-and-tricks">
+        <source>Tips &amp; tricks</source>
+        <target>Tips &amp; tricks</target>
+      </trans-unit>
+      <trans-unit id="world-cuisines">
+        <source>World Cuisines</source>
+        <target>Wereldkeukens</target>
+      </trans-unit>
+      <trans-unit id="my-favs">
+        <source>My favourites</source>
+        <target>Mijn favorieten</target>
+      </trans-unit>
+      <trans-unit id="my-rav-recipes">
+        <source>My favourite recipes</source>
+        <target>Mijn favoriete recepten</target>
+      </trans-unit>
+      <trans-unit id="search">
+        <source>Search</source>
+        <target>Zoeken</target>
+      </trans-unit>
+      <trans-unit id="your-top-cat">
+        <source>Your top categories</source>
+        <target>Jouw top categorieën</target>
+      </trans-unit>
+      <trans-unit id="dif-courses">
+        <source>Different courses</source>
+        <target>Verschillende gangen</target>
+      </trans-unit>
+      <trans-unit id="browse all">
+        <source>Browse all</source>
+        <target>Alle categorieën</target>
+      </trans-unit>
+      <trans-unit id="my-profile">
+        <source>My profile</source>
+        <target>Mijn profiel</target>
+      </trans-unit>
+      <trans-unit id="eating-diet-pref">
+        <source>Eating &amp; diet preferences</source>
+        <target>Eet &amp; dieet voorkeuren</target>
+      </trans-unit>
+      <trans-unit id="notifications">
+        <source>Notifications</source>
+        <target>Notificaties</target>
+      </trans-unit>
+      <trans-unit id="about-swapmeals">
+        <source>About SwapMeals</source>
+        <target>Over SwapMeals</target>
+      </trans-unit>
+      <trans-unit id="privacy-policy">
+        <source>Privacy policy</source>
+        <target>Privacyverklaring</target>
+      </trans-unit>
+      <trans-unit id="follow-us">
+        <source>Follow us</source>
+        <target>Volg ons</target>
+      </trans-unit>
+      <trans-unit id="select-language">
+        <source>Select language</source>
+        <target>Selecteer taal</target>
+      </trans-unit>
+      <trans-unit id="choose-fav-groc">
+        <source>Choose your favorite grocery store</source>
+        <target>Kies je favoriete supermarkt</target>
+      </trans-unit>
+      <trans-unit id="buy-at-ah">
+        <source>Buy at ah.nl</source>
+        <target>Koop op ah.nl</target>
+      </trans-unit>
+      <trans-unit id="groc-list-am-ingredients">
+        <source>Grocery list: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="ien"/>10 ingredients<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/di"/></source>
+        <target>Grocery list: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="ien"/>10 ingrediënten<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/di"/></target>
+      </trans-unit>
+      <trans-unit id="order-ingredients">
+        <source>Order ingredients</source>
+        <target>Bestel ingrediënten</target>
+      </trans-unit>
+      <trans-unit id="buy-ingredients">
+        <source>Buy ingredients</source>
+        <target>Koop ingrediënten</target>
+      </trans-unit>
+      <trans-unit id="servings-title">
+        <source>Changing the number of servings has effect on the composition of your grocery list.</source>
+        <target>Het aantal porties veranderen heeft effect op je boodschappenlijst</target>
+      </trans-unit>
+      <trans-unit id="servings-text">
+        <source>If you change the amounts here, the ingredient amounts in the grocery list will be reset. <x id="LINE_BREAK" ctype="lb" equiv-text="           &lt;br&gt;&lt;b"/><x id="LINE_BREAK" ctype="lb" equiv-text="           &lt;br&gt;&lt;b"/> Are you sure you want this? </source>
+        <target>Als je het aantal porties aanpast, veranderen de hoeveelheden in je boodschappenlijst. <x id="LINE_BREAK" ctype="lb" equiv-text="           &lt;br&gt;&lt;b"/><x id="LINE_BREAK" ctype="lb" equiv-text="           &lt;br&gt;&lt;b"/> Weet je zeker dat je dit wilt?</target>
+      </trans-unit>
+      <trans-unit id="c809caa13bcc37dd75848da5198fa8cc3ce8cbb6">
+        <source>Yes, continue</source>
+        <target>Ja, ga door</target>
+      </trans-unit>
+      <trans-unit id="change-amount">
+        <source>Change the amount</source>
+        <target>Verander het aantal porties</target>
+      </trans-unit>
+      <trans-unit id="clear-entire-list">
+        <source>Clear entire list</source>
+        <target>Verwijder lijst</target>
+      </trans-unit>
+      <trans-unit id="preselect-servings">
+        <source>Preselect the number of servings you need per recipe.</source>
+        <target>Selecteer het aantal porties dat u nodig heeft</target>
+      </trans-unit>
+      <trans-unit id="delete">
+        <source>Delete</source>
+        <target>Verwijder</target>
+      </trans-unit>
+      <trans-unit id="min-preparation">
+        <source><x id="INTERPOLATION" equiv-text="&amp;#xD;&amp;#xA;                &lt;p *ngIf="/> min. preparation</source>
+        <target><x id="INTERPOLATION" equiv-text="&amp;#xD;&amp;#xA;                &lt;p *ngIf="/> min. voorbereiding</target>
+      </trans-unit>
+      <trans-unit id="servings">
+        <source><x id="INTERPOLATION" equiv-text="                 "/> servings</source>
+        <target><x id="INTERPOLATION" equiv-text="                 "/> porties</target>
+      </trans-unit>
+      <trans-unit id="required-ingredients">
+        <source>Required ingredients</source>
+        <target>Benodigde ingrediënten</target>
+      </trans-unit>
+      <trans-unit id="vegetables">
+        <source>Vegetables</source>
+        <target>Groentes</target>
+      </trans-unit>
+      <trans-unit id="edit-amount">
+        <source>Edit amount</source>
+        <target>Verander hoeveelheid</target>
+      </trans-unit>
+      <trans-unit id="recipe-colon">
+        <source>Recipe: <x id="START_TAG_SPAN" ctype="x-span" equiv-text="                &lt;p i18n=&quot;@@recipe-colon&quot;&gt;Recipe: &lt;span [routerLink]=&quot;[&apos;/recipe/Espresso-Mini-Muffins-with-Chocol"/>Miso coconut noodle soup<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&quot; class"/></source>
+        <target>Recept: <x id="START_TAG_SPAN" ctype="x-span" equiv-text="                &lt;p i18n=&quot;@@recipe-colon&quot;&gt;Recipe: &lt;span [routerLink]=&quot;[&apos;/recipe/Espresso-Mini-Muffins-with-Chocol"/>Miso coconut noodle soup<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&quot; class"/></target>
+      </trans-unit>
+      <trans-unit id="oils">
+        <source>Oils</source>
+        <target>Oliën</target>
+      </trans-unit>
+      <trans-unit id="grocerylist-am-ingredients">
+        <source>Grocery list: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&gt;&amp;#xD;&amp;#xA;"/>10 ingredients<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="xed-"/></source>
+        <target>Boodschappenlijst: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&gt;&amp;#xD;&amp;#xA;"/>10 ingrediënten<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="xed-"/></target>
+      </trans-unit>
+      <trans-unit id="your-groc-list-am-ingredients">
+        <source>Your grocery list contains: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="st:"/>10 ingredients<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="ents"/></source>
+        <target>Je boodschappenlijst bevat: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="st:"/>10 ingrediënten<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="ents"/></target>
+      </trans-unit>
+      <trans-unit id="my-not">
+        <source>My notifications</source>
+        <target>Mijn notificaties</target>
+      </trans-unit>
+      <trans-unit id="push-not">
+        <source>Push notifications</source>
+        <target>Push notificaties</target>
+      </trans-unit>
+      <trans-unit id="subscription">
+        <source>You are currently subscribed to receive the following emails at <x id="START_TAG_SPAN" ctype="x-span" equiv-text="following emails at &lt;span&amp;#xD;&amp;#xA;            st"/>jochem@verdify.tech<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&quot;&gt;joche"/></source>
+        <target>Je ontvangt op dit moment je mails op <x id="START_TAG_SPAN" ctype="x-span" equiv-text="following emails at &lt;span&amp;#xD;&amp;#xA;            st"/>jochem@verdify.tech<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&quot;&gt;joche"/></target>
+      </trans-unit>
+      <trans-unit id="recom-not">
+        <source>Recipe recommendations</source>
+        <target>Aanbevolen recepten</target>
+      </trans-unit>
+      <trans-unit id="switch">
+        <source>Switch</source>
+        <target>Wissel</target>
+      </trans-unit>
+      <trans-unit id="prod-up-not">
+        <source>Product updates</source>
+        <target>Product updates</target>
+      </trans-unit>
+      <trans-unit id="prom-updates-not">
+        <source>Promotional updates</source>
+        <target>Promoties</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

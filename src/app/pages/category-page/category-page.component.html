@@ -1,0 +1,9 @@
+<main>
+    <div class="content">
+        <breadcrumbs [breadCrumbs]="breadCrumbs" class=""></breadcrumbs>
+        <h1 class="grid-margin" id="title">{{title}}</h1>
+        <!-- <app-user-follow *ngIf="isCook" class="grid-margin"></app-user-follow> -->
+        <app-recipe-grid [recipes]="recipes"></app-recipe-grid>
+    </div>
+</main>
+<app-nav page="cat" [shadow]="true"></app-nav>

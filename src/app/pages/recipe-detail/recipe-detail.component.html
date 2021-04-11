@@ -1,0 +1,1384 @@
+<main>
+  <div
+    *ngIf="showReviewPopup"
+    (click)="closeReviewPopup($event)"
+    class="review-popup pop-up"
+  >
+    <div class="make-review">
+      <svg
+        (click)="closeReviewPopup($event)"
+        class="close"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          style="pointer-events: none"
+          d="M17 1L9 9.19958L17 17"
+          stroke="#182D09"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          style="pointer-events: none"
+          d="M1 17L9 8.80042L1 1"
+          stroke="#182D09"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <img src="assets/thumb.svg" alt="" />
+
+      <h2 *ngIf="!userRecipeRatingSubmitted" i18n="@@opinion-title">
+        Share your opinion
+      </h2>
+      <p *ngIf="!userRecipeRatingSubmitted" i18n="@@ask-opinion">
+        Did you like this recipe?<br />
+        Indicate how many stars you think it is worth.
+      </p>
+
+      <h2 *ngIf="userRecipeRatingSubmitted" i18n="@@thank-you">Thank you!</h2>
+      <p *ngIf="userRecipeRatingSubmitted" i18n="@@helped-others">
+        On behalf of many others who are looking for recipes.<br />
+      </p>
+
+      <app-rating
+        (ratingOutput)="setRating($event)"
+        [fill]="userRecipeRating"
+        [clickable]="!userRecipeRatingSubmitted"
+      ></app-rating>
+
+      <div
+        *ngIf="!userRecipeRatingSubmitted"
+        class="btn big primary-social"
+        [ngClass]="{ disabled: userRecipeRating == 0 }"
+        (click)="submitRating()"
+        i18n="@@my-opinion"
+      >
+        This is my opinion
+      </div>
+      <div
+        *ngIf="userRecipeRatingSubmitted"
+        class="btn big secondary-food close-popup"
+        (click)="closeReviewPopup($event)"
+        i18n="@@close"
+      >
+        Close
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="imgUploadState != 'not-started'"
+    (click)="closeReviewPopup($event)"
+    class="pop-up"
+  >
+    <div class="img-popup" *ngIf="imgUploadState != 'not-started'">
+      <svg
+        [ngClass]="{ white: imgUploadState == 'choose-image' }"
+        (click)="setImgUploadState('not-started')"
+        class="close"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          style="pointer-events: none"
+          d="M17 1L9 9.19958L17 17"
+          stroke="#182D09"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          style="pointer-events: none"
+          d="M1 17L9 8.80042L1 1"
+          stroke="#182D09"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <!-- Choose image -->
+      <ng-container *ngIf="imgUploadState == 'choose-image'">
+        <div *ngIf="!selectedFile" class="img cover">
+          <svg
+            width="53"
+            height="43"
+            viewBox="0 0 53 43"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="51"
+              height="40.375"
+              rx="4"
+              stroke="white"
+              stroke-width="2"
+            />
+            <circle
+              cx="18.5312"
+              cy="10.0311"
+              r="4.78125"
+              stroke="white"
+              stroke-width="2"
+            />
+            <path
+              d="M1.5314 30.75L17.4689 21.1875L24.3752 27.0312L36.0627 16.9375L51.4689 28.625"
+              stroke="white"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
+          *ngIf="selectedFile"
+          class="img cover"
+          [ngStyle]="{ 'background-image': 'url(' + selectedFile.src + ')' }"
+        ></div>
+        <h2 class="choose-image" i18n="@@share-cooking-skills">
+          Share your cooking skills with others
+        </h2>
+        <p i18n="@@upload-photo">
+          Your photo will be added to this recipe so others can see it.
+        </p>
+        <!--upload image button-->
+        <label class="image-upload-button btn primary-social choose-image">
+          <input
+            #imageInput
+            type="file"
+            accept="image/*"
+            (change)="processFile(imageInput)"
+          />
+          <p i18n="@@photo-library">Photo library</p>
+        </label>
+      </ng-container>
+      <!-- Approve image -->
+      <ng-container *ngIf="imgUploadState == 'approve-image'">
+        <div *ngIf="!selectedFile" class="img cover"></div>
+        <div
+          *ngIf="selectedFile"
+          class="img cover"
+          [ngStyle]="{ 'background-image': 'url(' + selectedFile.src + ')' }"
+        ></div>
+        <h2>It looks delicious</h2>
+        <p class="photographer" i18n="@@photographer-name">
+          What is your (photographer) name?
+        </p>
+        <input type="text" placeholder="My name is..." />
+        <app-checkbox
+          [isSmaller]="true"
+          value="I agree to the terms"
+          uniqueId="agree-terms"
+        ></app-checkbox>
+        <div
+          class="btn primary-food big"
+          (click)="setImgUploadState('upload-success')"
+        >
+          Share this photo
+        </div>
+      </ng-container>
+      <!-- Result success -->
+      <ng-container *ngIf="imgUploadState == 'upload-success'">
+        <!-- <div class="img" style="background-image: 'url(assets/upload-sharing-caring.svg)';"></div> -->
+        <img
+          src="assets/upload-sharing-caring.svg"
+          class="img success"
+          alt=""
+        />
+        <h2 class="success" i18n="@@succes-title">
+          On behalf of many others who are looking for recipes, thank you!
+        </h2>
+        <p i18n="@@sucess-text">
+          Once your photo is approved we will add it to this recipe.
+        </p>
+        <p class="second-p" i18n="@@success-thnx">
+          Thank you for sharing and bon apetit!
+        </p>
+        <div
+          class="btn secondary-food success big"
+          (click)="setImgUploadState('not-started')"
+          i18n="@@close"
+        >
+          Close
+        </div>
+      </ng-container>
+      <!-- Result failed -->
+      <ng-container *ngIf="imgUploadState == 'upload-error'">
+        <img src="assets/big-error-arrow.svg" class="img error" alt="" />
+        <h2 class="error" i18n="@@went-wrong">
+          Oops, it looks like something went wrong.
+        </h2>
+        <p>We did not receive your photo.</p>
+        <p class="second-p" i18n="@@please-try-again">Please try again</p>
+        <p class="second-p" i18n="@@close-window">
+          Close this window, refresh the webpage, and click the share button
+          again.
+        </p>
+        <div
+          class="btn secondary-food error big"
+          (click)="setImgUploadState('not-started')"
+          i18n="@@close"
+        >
+          Close
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="top-img" [ngStyle]="{ background: rgbImgBackground }">
+    <div class="actions">
+      <div
+        [routerLink]="['']"
+        role="button"
+        class="icon round"
+        i18n-aria-label="@@aria-go-back"
+        aria-label="Go back to recipe overview"
+        role="button"
+      >
+        <svg
+          aria-hidden="true"
+          width="13"
+          height="10"
+          viewBox="0 0 13 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 1L1 5.09979L5 9"
+            stroke="#333333"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12.5004 5.12533L1.83374 5.12533"
+            stroke="#333333"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div>
+        <!-- <img src="/assets/print.svg" class="print-icon" role="button" alt="print-button"> -->
+        <div
+          class="icon round"
+          (click)="printPage()"
+          role="button"
+          i18n-aria-label="@@aria-print-recipe"
+          aria-label="Print this recipe"
+        >
+          <!--Print-->
+          <svg
+            aria-hidden="true"
+            width="23"
+            height="24"
+            viewBox="0 0 23 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="4.43848"
+              y="1"
+              width="14"
+              height="6"
+              stroke="#333333"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M1.00007 7.00012H21.7843V17.0001H18.4363V14.0001H4.43628V17.0001H1.00007V7.00012Z"
+              stroke="#333333"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="4.43848"
+              y="14.0002"
+              width="14"
+              height="9"
+              stroke="#333333"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="share">
+          <div
+            class="icon round"
+            (click)="shareDropDown = !shareDropDown"
+            role="button"
+            i18n-aria-label="@@aria-share"
+            aria-label="Share this recipe"
+            style="padding: 0"
+          >
+            <!--Share-->
+            <svg
+              width="20"
+              height="16"
+              viewBox="0 0 20 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.6363 1H1.27271L8.50755 6.16775V14.6429L18.6363 1Z"
+                stroke="#001C05"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M8.50751 6.16775L18.4296 1"
+                stroke="#001C05"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div
+            (click)="shareDropDown = !shareDropDown; openWhatsApp()"
+            *ngIf="shareDropDown"
+            class="icon round drop whatsapp"
+            role="button"
+            i18n-aria-label="@@aria-whatsapp"
+            aria-label="Share recipe via whatsapp"
+          >
+            <!-- App -->
+            <svg
+              aria-hidden="true"
+              height="682pt"
+              viewBox="-23 -21 682 682.66669"
+              width="682pt"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m544.386719 93.007812c-59.875-59.945312-139.503907-92.9726558-224.335938-93.007812-174.804687 0-317.070312 142.261719-317.140625 317.113281-.023437 55.894531 14.578125 110.457031 42.332032 158.550781l-44.992188 164.335938 168.121094-44.101562c46.324218 25.269531 98.476562 38.585937 151.550781 38.601562h.132813c174.785156 0 317.066406-142.273438 317.132812-317.132812.035156-84.742188-32.921875-164.417969-92.800781-224.359376zm-224.335938 487.933594h-.109375c-47.296875-.019531-93.683594-12.730468-134.160156-36.742187l-9.621094-5.714844-99.765625 26.171875 26.628907-97.269531-6.269532-9.972657c-26.386718-41.96875-40.320312-90.476562-40.296875-140.28125.054688-145.332031 118.304688-263.570312 263.699219-263.570312 70.40625.023438 136.589844 27.476562 186.355469 77.300781s77.15625 116.050781 77.132812 186.484375c-.0625 145.34375-118.304687 263.59375-263.59375 263.59375zm144.585938-197.417968c-7.921875-3.96875-46.882813-23.132813-54.148438-25.78125-7.257812-2.644532-12.546875-3.960938-17.824219 3.96875-5.285156 7.929687-20.46875 25.78125-25.09375 31.066406-4.625 5.289062-9.242187 5.953125-17.167968 1.984375-7.925782-3.964844-33.457032-12.335938-63.726563-39.332031-23.554687-21.011719-39.457031-46.960938-44.082031-54.890626-4.617188-7.9375-.039062-11.8125 3.476562-16.171874 8.578126-10.652344 17.167969-21.820313 19.808594-27.105469 2.644532-5.289063 1.320313-9.917969-.664062-13.882813-1.976563-3.964844-17.824219-42.96875-24.425782-58.839844-6.4375-15.445312-12.964843-13.359374-17.832031-13.601562-4.617187-.230469-9.902343-.277344-15.1875-.277344-5.28125 0-13.867187 1.980469-21.132812 9.917969-7.261719 7.933594-27.730469 27.101563-27.730469 66.105469s28.394531 76.683594 32.355469 81.972656c3.960937 5.289062 55.878906 85.328125 135.367187 119.648438 18.90625 8.171874 33.664063 13.042968 45.175782 16.695312 18.984374 6.03125 36.253906 5.179688 49.910156 3.140625 15.226562-2.277344 46.878906-19.171875 53.488281-37.679687 6.601563-18.511719 6.601563-34.375 4.617187-37.683594-1.976562-3.304688-7.261718-5.285156-15.183593-9.253906zm0 0"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+
+          <div
+            *ngIf="shareDropDown"
+            (click)="copyLink()"
+            class="icon round drop"
+            role="button"
+            i18n-aria-label="@@aria-copy"
+            aria-label="Copy link of this recipe"
+          >
+            <!-- Copy -->
+            <svg
+              aria-hidden="true"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="5.40039"
+                y="1"
+                width="15.6"
+                height="15.6"
+                rx="2"
+                fill="white"
+                stroke="#333333"
+                stroke-width="1"
+              />
+              <rect
+                x="1"
+                y="5.40039"
+                width="15.6"
+                height="15.6"
+                rx="2"
+                fill="white"
+                stroke="#333333"
+                stroke-width="1"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="icon round like"
+          (click)="toggleFavorite($event)"
+          role="button"
+          i18n-aria-label="@@aria-fav"
+          aria-label="Mark recipe as favorite"
+        >
+          <!---like-->
+          <!--TODO: ngClass recipe.isFavorite-->
+          <svg
+            aria-hidden="true"
+            width="18"
+            height="17"
+            viewBox="0 0 18 17"
+            fill="none"
+            [ngClass]="{ fav: true }"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.00258 3.40765C8.74393 3.31762 8.59506 3.08939 8.40809 2.91547C7.76973 2.32165 7.04322 1.90077 6.18665 1.724C4.48395 1.3726 3.00401 1.74721 1.86874 3.12363C1.39258 3.70094 1.1252 4.37967 1.03858 5.13641C0.842619 6.84837 1.40579 8.31497 2.44094 9.63691C3.0961 10.4736 3.8836 11.1826 4.68343 11.872C5.94926 12.9632 7.29393 13.9534 8.69183 14.8704C8.99599 15.0699 9.00922 15.07 9.31331 14.8704C10.7109 13.9529 12.0542 12.9614 13.3224 11.8729C14.0602 11.2396 14.7819 10.5833 15.4073 9.835C16.1811 8.90924 16.7557 7.87939 16.9368 6.6663C16.9963 6.10374 17.0499 5.62252 16.9196 4.84833C16.6892 3.63604 16.0158 2.7418 14.965 2.1242C14.4007 1.7925 13.7855 1.63477 13.1265 1.60752C11.6193 1.54521 10.3745 2.09882 9.33554 3.16418C9.24247 3.25961 9.14816 3.35175 9.02475 3.40765"
+              stroke="#BC2872"
+              stroke-width="2"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="img-selection">
+      <div
+        (click)="setImg()"
+        role="button"
+        class="icon round"
+        i18n-aria-label="@@aria-prev-img"
+        aria-label="Show previous image"
+      >
+        <svg
+          aria-hidden="true"
+          width="13"
+          height="10"
+          viewBox="0 0 13 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 1L1 5.09979L5 9"
+            stroke="#333333"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12.5004 5.12533L1.83374 5.12533"
+            stroke="#333333"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <p i18n="@@photo-grapher">Photo Grapher</p>
+      <div
+        (click)="setImg()"
+        role="button"
+        class="icon round"
+        i18n-aria-label="@@aria-next"
+        aria-label="Show next image"
+        style="transform: rotate(180deg)"
+      >
+        <svg
+          aria-hidden="true"
+          width="13"
+          height="10"
+          viewBox="0 0 13 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 1L1 5.09979L5 9"
+            stroke="#333333"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12.5004 5.12533L1.83374 5.12533"
+            stroke="#333333"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+    <div class="top-info reverse" *ngIf="recipe">
+      <div class="top-info-left">
+        <div class="image" id="gradient-bg">
+          <!-- <img src="{{recipe.picture}}" (load)="setBackgroundColorthief()" i18n-alt="@@picture-recipe-alt"
+                        alt="picture of this recipe" role="img" id="img"> -->
+          <img
+            src="{{ selectedImg }}"
+            (load)="setBackgroundColorthief()"
+            i18n-alt="@@picture-recipe-alt"
+            alt="picture of {{ recipe.title }}"
+            role="img"
+            id="img"
+          />
+        </div>
+        <!-- <app-user-follow class="recipe-maker"> </app-user-follow> -->
+      </div>
+      <div class="top-info-right">
+        <h1 class="title" [ngClass]="{ 'light-title': isDarkBg }">
+          {{ recipe.title }}
+        </h1>
+        <!-- <div class="rating-top" style="margin-left: -8px;"> -->
+        <!-- Rate Recipe button -->
+        <div class="btn-rate">
+          <app-rating [fill]="recipe.rating"></app-rating>
+          <!-- <p class="addreview-txt" [ngClass]="{'light' : isDarkBg}" (click)="openReviewPopup()"
+                                i18n="@@leave-review">(5) Leave review</p> -->
+
+          <button
+            (click)="scrollToCommentSection()"
+            class="btn big secondary-food cookmode-btn"
+          >
+            Rate Recipe
+          </button>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="cooking-time"> -->
+        <app-cooking-timer [minutes]="60"></app-cooking-timer>
+        <!-- <p i18n="@@total-cooking-time">Total cooking time {{recipe.time.total}} min.</p> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <div
+    class="content"
+    *ngIf="recipe"
+    [ngClass]="{ 'page-not-scrollable': popupActive() }"
+  >
+    <div class="information">
+      <!-- <div class="top-info breadcrumbs"> -->
+      <breadcrumbs [breadCrumbs]="breadCrumbs"></breadcrumbs>
+      <!-- <div class="social-trigger" i18n="@@cooked-times">This recipe is already cooked
+                    {{recipe.times_recipe_cooked}} times</div>
+            </div> -->
+      <!-- <p class="social-trigger small-only" i18n="@@cooked-times">This dish has been cooked
+                {{recipe.times_recipe_cooked}} times before</p> -->
+      <h1 class="small-only to-right">{{ recipe.title }}</h1>
+      <app-rating
+        class="small-only to-right"
+        [fill]="recipe.rating"
+      ></app-rating>
+
+      <div class="times times-top small-only">
+        <div class="head">
+          <app-cooking-timer [minutes]="recipe.time.total"></app-cooking-timer>
+          <div (click)="toggleTime($event)" class="light-icon-button">
+            <svg
+              width="14"
+              height="8"
+              viewBox="0 0 14 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                fill="#2F303B"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div *ngIf="showTimes" class="extra-times">
+          <p i18n="@@time-prep">
+            Preperation time: {{ recipe.time.preparation }} min
+          </p>
+          <p i18n="@@time-cook">Cooking time: {{ recipe.time.cooking }} min</p>
+          <p i18n="@@time-total">Total time: {{ recipe.time.total }} min</p>
+        </div>
+      </div>
+
+      <!-- ingredients and instructions -->
+      <div class="flex">
+        <div class="ingredients-box">
+          <h2 class="head" i18n="@@ingredients">
+            Ingredients ({{ recipe.ingredients.length }})
+          </h2>
+          <div class="info-ingredient">
+            <!-- <p class="quantity-title" i18n="@@show-ingredient-quantities-for">Show ingredient quantities for</p> -->
+            <h3 class="quantity-title" i18n="@@amount-of-servings">
+              Select the number of servings
+            </h3>
+            <div class="quantity-person">
+              <div class="adjust-servings">
+                <div
+                  class="light-icon-button left servings"
+                  (click)="adjustServings('dec')"
+                  style="margin-right: 2px"
+                  role="button"
+                  i18n-aria-label="@@aria-min-serving"
+                  aria-label="minus one serving"
+                >
+                  -
+                </div>
+                <div
+                  class="light-icon-button right servings"
+                  role="button"
+                  i18n-aria-label="@@aria-plus-serving"
+                  aria-label="Add one serving"
+                  (click)="adjustServings('inc')"
+                >
+                  +
+                </div>
+              </div>
+              <p i18n="@@persons">{{ recipe.serving }} persons</p>
+            </div>
+
+            <!-- INGREDIENTS -->
+            <div class="checklist">
+              <div
+                id="ing-box-{{ i }}"
+                [ngClass]="{ 'ing-has-swapables': ing.swapables }"
+                *ngFor="let ing of recipe.ingredients; index as i"
+              >
+                <div class="ingredient">
+                  <app-checkbox
+                    uniqueId="ing{{ i }}"
+                    id="ing{{ i }}"
+                    value="{{ ing.quantity }} {{ ing.unit.shorthand }} {{
+                      ing.name
+                    }}"
+                    (change)="checkboxClick($event.target, i)"
+                  >
+                  </app-checkbox>
+
+                  <!-- Swap logo icon -->
+                  <div class="swap-and-fold" *ngIf="ing.swapables">
+                    <svg
+                      width="45"
+                      height="20"
+                      style="height: 25px"
+                      viewBox="0 0 45 20"
+                      [ngClass]="{ 'swap-active': isChecked('ing' + i) }"
+                      class="swap-logo"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10.5403 8.47866C7.90897 6.99715 5.6322 7.39671 5.6322 7.39671C5.64349 7.39482 5.88894 8.547 5.88894 8.547C9.49923 8.76149 11.0331 10.3977 11.2437 11.6524C11.8127 15.0425 8.04815 15.6243 8.04815 15.6243C5.44506 16.1653 3.87831 15.3642 3.92721 15.3699L4.11342 13.7755L0 16.0675L2.98773 20.0005L3.21343 18.7411C3.21343 18.7411 12.6666 20.0356 13.4161 13.8438C13.6371 12.0159 12.3995 9.5255 10.5403 8.47866Z"
+                        fill="#001C05"
+                      />
+                      <path
+                        d="M10.28 1.25943C10.28 1.25943 0.827763 -0.0360655 0.0791848 6.15384C-0.141815 7.98177 1.09672 10.4712 2.95594 11.518C5.58725 12.9996 7.86308 12.6 7.86308 12.6C7.85179 12.6019 7.60634 11.4497 7.60634 11.4497C3.99699 11.2352 2.46222 9.599 2.25157 8.34526C1.68261 4.9561 5.44619 4.37526 5.44619 4.37526C8.04928 3.83428 9.61603 4.63626 9.56713 4.62961L9.38092 6.22312L13.4943 3.93299L10.5057 0L10.28 1.25943Z"
+                        fill="#001C05"
+                      />
+                      <path
+                        d="M30.8305 7.32227C28.4879 7.32227 27.3086 8.4232 27.0218 9.97494L29.3108 10.4979C29.4716 9.66744 29.9362 9.27073 30.7412 9.27073C31.6713 9.27073 32.0465 9.77564 32.0465 10.6602V11.2553H29.829C27.5936 11.2553 26.7002 12.3201 26.7002 13.8538C26.7002 15.5318 27.7544 16.2711 29.1848 16.2711C30.6331 16.2711 31.392 15.4056 31.8208 14.0522H32.1706V16.0908H34.4587V10.6592C34.4596 8.51336 33.4045 7.32227 30.8305 7.32227ZM32.0456 12.807C32.0456 13.7276 31.3478 14.3948 30.24 14.3948C29.3099 14.3948 29.0061 13.962 29.0061 13.4201C29.0061 12.825 29.5064 12.4634 30.2936 12.4634H32.0456V12.807Z"
+                        fill="#001C05"
+                      />
+                      <path
+                        d="M41.4857 7.30469C40.1268 7.30469 39.3321 8.20726 38.8854 9.70396H38.5892V7.53911H36.1582V18.8341H38.5892V13.8543H38.8676C39.2964 15.3519 40.0732 16.3437 41.4866 16.3437C43.3101 16.3437 44.4001 14.7739 44.4001 11.8327C44.4001 8.8925 43.3449 7.30469 41.4857 7.30469ZM40.3055 14.1789C39.2682 14.1789 38.5892 13.3854 38.5892 12.1943V11.5271C38.5892 10.3 39.2513 9.52459 40.3233 9.52459C41.4857 9.52459 42.0039 10.2649 42.0039 11.8337C42.0039 13.4025 41.4857 14.1789 40.3055 14.1789Z"
+                        fill="#001C05"
+                      />
+                      <path
+                        d="M24.2799 12.2478C24.2799 13.3127 24.2131 14.052 23.1025 14.052C22.0568 14.052 21.8527 13.4569 21.8527 12.5904V7.48438H19.4207V12.2478C19.4207 13.3127 19.0568 14.052 18.0195 14.052C17.1252 14.052 16.7321 13.4569 16.7321 12.5904V7.48438H14.2832V13.2766C14.2832 15.1349 15.123 16.2719 16.7866 16.2719C18.1813 16.2719 19.0117 15.3874 19.4762 13.7103H19.8073C19.9145 15.3162 20.38 16.2719 22.7837 16.2719C24.9147 16.2719 25.9539 14.5674 25.9539 13.5784V7.48438H24.279V12.2478H24.2799Z"
+                        fill="#001C05"
+                      />
+                    </svg>
+                    <svg
+                      class="fold"
+                      width="14"
+                      height="8"
+                      viewBox="0 0 14 8"
+                      fill="none"
+                      (click)="flipSwapables(i, $event)"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                        fill="#2F303B"
+                        stroke-width="1"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Swap ingredients -->
+                <div
+                  class="ingredient swap-{{ i }}"
+                  *ngFor="let swap of ing.swapables; index as j"
+                >
+                  <app-checkbox
+                    [isSwap]="true"
+                    uniqueId="swap{{ i }}{{ j }}"
+                    id="swap{{ i }}{{ j }}"
+                    (change)="checkboxClick($event.target, i)"
+                    value="{{ swap.quantity }} {{ swap.unit.shorthand }} {{
+                      swap.name
+                    }}"
+                  >
+                  </app-checkbox>
+
+                  <!-- Swap logo icon -->
+                  <svg
+                    width="45"
+                    height="20"
+                    style="height: 25px"
+                    viewBox="0 0 45 20"
+                    [ngClass]="{ 'swap-active': isChecked('swap' + i + j) }"
+                    class="swap-logo"
+                    (click)="setChecked('swap' + i + j, i)"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.5403 8.47866C7.90897 6.99715 5.6322 7.39671 5.6322 7.39671C5.64349 7.39482 5.88894 8.547 5.88894 8.547C9.49923 8.76149 11.0331 10.3977 11.2437 11.6524C11.8127 15.0425 8.04815 15.6243 8.04815 15.6243C5.44506 16.1653 3.87831 15.3642 3.92721 15.3699L4.11342 13.7755L0 16.0675L2.98773 20.0005L3.21343 18.7411C3.21343 18.7411 12.6666 20.0356 13.4161 13.8438C13.6371 12.0159 12.3995 9.5255 10.5403 8.47866Z"
+                      fill="#001C05"
+                    />
+                    <path
+                      d="M10.28 1.25943C10.28 1.25943 0.827763 -0.0360655 0.0791848 6.15384C-0.141815 7.98177 1.09672 10.4712 2.95594 11.518C5.58725 12.9996 7.86308 12.6 7.86308 12.6C7.85179 12.6019 7.60634 11.4497 7.60634 11.4497C3.99699 11.2352 2.46222 9.599 2.25157 8.34526C1.68261 4.9561 5.44619 4.37526 5.44619 4.37526C8.04928 3.83428 9.61603 4.63626 9.56713 4.62961L9.38092 6.22312L13.4943 3.93299L10.5057 0L10.28 1.25943Z"
+                      fill="#001C05"
+                    />
+                    <path
+                      d="M30.8305 7.32227C28.4879 7.32227 27.3086 8.4232 27.0218 9.97494L29.3108 10.4979C29.4716 9.66744 29.9362 9.27073 30.7412 9.27073C31.6713 9.27073 32.0465 9.77564 32.0465 10.6602V11.2553H29.829C27.5936 11.2553 26.7002 12.3201 26.7002 13.8538C26.7002 15.5318 27.7544 16.2711 29.1848 16.2711C30.6331 16.2711 31.392 15.4056 31.8208 14.0522H32.1706V16.0908H34.4587V10.6592C34.4596 8.51336 33.4045 7.32227 30.8305 7.32227ZM32.0456 12.807C32.0456 13.7276 31.3478 14.3948 30.24 14.3948C29.3099 14.3948 29.0061 13.962 29.0061 13.4201C29.0061 12.825 29.5064 12.4634 30.2936 12.4634H32.0456V12.807Z"
+                      fill="#001C05"
+                    />
+                    <path
+                      d="M41.4857 7.30469C40.1268 7.30469 39.3321 8.20726 38.8854 9.70396H38.5892V7.53911H36.1582V18.8341H38.5892V13.8543H38.8676C39.2964 15.3519 40.0732 16.3437 41.4866 16.3437C43.3101 16.3437 44.4001 14.7739 44.4001 11.8327C44.4001 8.8925 43.3449 7.30469 41.4857 7.30469ZM40.3055 14.1789C39.2682 14.1789 38.5892 13.3854 38.5892 12.1943V11.5271C38.5892 10.3 39.2513 9.52459 40.3233 9.52459C41.4857 9.52459 42.0039 10.2649 42.0039 11.8337C42.0039 13.4025 41.4857 14.1789 40.3055 14.1789Z"
+                      fill="#001C05"
+                    />
+                    <path
+                      d="M24.2799 12.2478C24.2799 13.3127 24.2131 14.052 23.1025 14.052C22.0568 14.052 21.8527 13.4569 21.8527 12.5904V7.48438H19.4207V12.2478C19.4207 13.3127 19.0568 14.052 18.0195 14.052C17.1252 14.052 16.7321 13.4569 16.7321 12.5904V7.48438H14.2832V13.2766C14.2832 15.1349 15.123 16.2719 16.7866 16.2719C18.1813 16.2719 19.0117 15.3874 19.4762 13.7103H19.8073C19.9145 15.3162 20.38 16.2719 22.7837 16.2719C24.9147 16.2719 25.9539 14.5674 25.9539 13.5784V7.48438H24.279V12.2478H24.2799Z"
+                      fill="#001C05"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="btn big primary-food to-my-list"
+            role="button"
+            i18n-aria-label="@@add-selection-to-list"
+            aria-label="Add selection to my list"
+          >
+            <p
+              aria-hidden="true"
+              i18n="@@add-selection-to-list"
+              (click)="addRecipeToList()"
+            >
+              Add selection to my list
+            </p>
+            <!-- <p aria-hidden="true" style="font-size: 30px; font-weight: 300; margin-left: 24px;">+</p> -->
+            <svg
+              aria-hidden="true"
+              style="width: 25px"
+              width="40"
+              height="37"
+              viewBox="0 0 40 37"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.38452 13.4922H38.6153L33.9614 35.5714H6.03837L1.38452 13.4922Z"
+                stroke="#2F303B"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.072 13.3954L15.773 1"
+                stroke="#2F303B"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M29.9277 13.3954L24.2268 1"
+                stroke="#2F303B"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M28.1443 21.3361V30.0515"
+                stroke="#2F303B"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M20 21.3361V30.0515"
+                stroke="#2F303B"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11.8557 21.3361V30.0515"
+                stroke="#2F303B"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+        <hr class="remove" />
+        <!-- instructions -->
+        <div class="instruction-box">
+          <h2 class="head" i18n="@@preparation">Preparation</h2>
+
+          <div class="info-instruction">
+            <ul>
+              <li
+                class="step"
+                *ngFor="let ins of recipe.instructions; let i = index"
+              >
+                <p class="step-nr">{{ i + 1 }}</p>
+                <p class="step-description">{{ ins.instruction }}</p>
+              </li>
+            </ul>
+          </div>
+          <!--Cookmode button-->
+
+          <div
+            role="button"
+            i18n-aria-label="@@aria-cookmode"
+            aria-label="Enter cookmode"
+            [routerLink]="['cookmode']"
+            class="btn big secondary-food cookmode-btn"
+          >
+            <p aria-hidden="true" i18n="@@start-preparation">
+              Start preparation
+            </p>
+            <svg
+              aria-hidden="true"
+              width="29"
+              height="22"
+              viewBox="0 0 29 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 15.446C21 13.6186 24.2821 12.2757 27.9964 12.4068C28.0438 13.3349 27.6364 15.1911 25.6276 15.1911C24.9959 15.1547 22.6717 15.0948 21.1742 17.4295C20.9058 17.848 19.5 19.7097 17.5 18.4915"
+                stroke="#5DAB24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5 10C5 7.9116 5.87247 7.27514 7.77605 5.52486C9.67963 3.77459 10.2122 3.0884 9.92891 1"
+                stroke="#5DAB24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10 10C10 8.14365 10.698 7.5779 12.2208 6.0221C13.7437 4.4663 14.1697 3.85635 13.9431 2"
+                stroke="#5DAB24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M1.98231 17.8074L1 12.8213H18.4633C18.336 13.5747 17.9613 15.6268 17.481 17.8074C17.0008 19.988 15.4618 21.065 14.7524 21.3309H4.76553C2.75725 21.3309 2.07327 18.9819 1.98231 17.8074Z"
+                stroke="#5DAB24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M14 10C14 8.60773 14.5235 8.18343 15.6656 7.01657C16.8078 5.84972 17.1273 5.39227 16.9573 4"
+                stroke="#5DAB24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div
+            class="btn secondary-food big add-photo"
+            (click)="setImgUploadState('choose-image')"
+          >
+            <p i18n="@@finished-photo">Finished? Add a photo of your result!</p>
+          </div>
+        </div>
+      </div>
+      <div class="categories">
+        <div class="category">{{ recipe.category.time_of_day }}</div>
+        <div class="category">{{ recipe.category.type_1 }}</div>
+        <div class="category">{{ recipe.category.type_2 }}</div>
+        <div class="category">{{ recipe.category.cuisine }}</div>
+        <div *ngFor="let d of recipe.category.diet" class="category">
+          {{ d }}
+        </div>
+        <div class="category">{{ recipe.category.time_of_day }}</div>
+        <div class="category">{{ recipe.category.type_1 }}</div>
+        <div class="category">{{ recipe.category.type_2 }}</div>
+        <div class="category">{{ recipe.category.cuisine }}</div>
+        <div class="category">{{ recipe.category.time_of_day }}</div>
+        <div class="category">{{ recipe.category.type_1 }}</div>
+        <div class="category">{{ recipe.category.type_2 }}</div>
+        <div class="category">{{ recipe.category.cuisine }}</div>
+        <div class="category">{{ recipe.category.time_of_day }}</div>
+        <div class="category">{{ recipe.category.type_1 }}</div>
+        <div class="category">{{ recipe.category.type_2 }}</div>
+        <div class="category">{{ recipe.category.cuisine }}</div>
+      </div>
+      <hr />
+      <div class="flex">
+        <div class="two">
+          <!-- <div class="categories small-only">
+                        <div class="category">{{recipe.category.time_of_day}}</div>
+                        <div class="category">{{recipe.category.type_1}}</div>
+                        <div class="category">{{recipe.category.type_2}}</div>
+                        <div class="category">{{recipe.category.cuisine}}</div>
+                        <div *ngFor="let d of recipe.category.diet" class="category">{{d}}</div>
+                    </div> -->
+          <div class="rating desktop head">
+            <h2 i18n="@@recipe-rating">Recipe's rating</h2>
+            <app-rating [fill]="recipe.rating"></app-rating>
+          </div>
+          <div
+            class="btn addreview secondary-food big desktop"
+            (click)="openReviewPopup()"
+            i18n="@@share-review"
+          >
+            Share your review
+          </div>
+        </div>
+        <div class="two">
+          <div class="times">
+            <div class="head">
+              <app-cooking-timer
+                [minutes]="recipe.time.total"
+              ></app-cooking-timer>
+              <div (click)="toggleTime($event)" class="light-icon-button">
+                <svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                    fill="#2F303B"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div *ngIf="showTimes" class="extra-times">
+              <p i18n="@@time-prep">
+                Preperation time: {{ recipe.time.preparation }} min
+              </p>
+              <p i18n="@@time-cook">
+                Cooking time: {{ recipe.time.cooking }} min
+              </p>
+              <p i18n="@@time-total">Total time: {{ recipe.time.total }} min</p>
+            </div>
+          </div>
+
+          <div class="rating small-only head">
+            <h2 i18n="@@recipe-rating">Recipe's rating</h2>
+            <app-rating [fill]="recipe.rating"></app-rating>
+          </div>
+          <div
+            class="btn addreview secondary-food big small-only"
+            (click)="openReviewPopup()"
+            i18n="@@share-review"
+          >
+            Share your review
+          </div>
+          <hr class="small-only" />
+          <div class="taste-profile">
+            <div class="head">
+              <h2 i18n="@@taste-profile">Taste Profile</h2>
+              <div (click)="toggleTaste($event)" class="light-icon-button">
+                <svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                    fill="#2F303B"
+                  />
+                </svg>
+              </div>
+            </div>
+            <app-taste-profile
+              *ngIf="showTasteProfile"
+              [tasteProfile]="recipe.taste_profile"
+              class="tastes"
+            ></app-taste-profile>
+          </div>
+          <!-- Cookware -->
+          <div class="cookware" *ngIf="recipe.equipments.length > 0">
+            <div class="head">
+              <h2 i18n="@@cookware">Cookware</h2>
+              <div (click)="toggleCookware($event)" class="light-icon-button">
+                <svg
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                    fill="#2F303B"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="showCookware" class="info-cookware">
+              <ul>
+                <li *ngFor="let cookware of recipe.equipments">
+                  {{ cookware }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    
+    <!-- allergens -->
+    <div class="information allergens-nutritions">
+      <div class="allergens">
+        <h2 i18n="@@allergens">Allergens</h2>
+        <div class="allergen">Allergen</div>
+        <div class="allergen">Some other allergie</div>
+
+        <div class="profile-trigger">
+          <div class="info">i</div>
+          <p i18n="@@alergic-profile-trigger">
+            Do you want to avoid specific food types? Set up your Verdify ID to
+            fully tailor every recipe to your needs and preferences.
+          </p>
+        </div>
+        <div
+          class="btn big secondary-food"
+          role="button"
+          i18n-aria-label="@@adjust-my-profile"
+          aria-label="Adjust my profile"
+        >
+          <p aria-hidden="true" i18n="@@my-verdify-id">My Verdify ID</p>
+          <svg
+            aria-hidden="true"
+            width="18"
+            height="14"
+            viewBox="0 0 18 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+            <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <!-- TODO -->
+      <div class="nutritions">
+        <h2 i18n="@@nutval-per-person">Nutritional value per person</h2>
+        <div class="head">
+          <div class="energy">
+            <svg
+              width="13"
+              height="18"
+              viewBox="0 0 13 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.39608 -0.000249997L0 11.7931L6.04931 10.7586L3.4108 18L13 6.13766L7.07968 6.89615L9.39608 -0.000249997Z"
+                fill="#001C05"
+              />
+            </svg>
+            <p i18n="@@energry">Energy</p>
+          </div>
+          <p>165 kcal</p>
+        </div>
+        <hr />
+        <div class="head nut">
+          <p>Protein</p>
+          <p>{{ recipe.nutrients.protein.value }} g</p>
+        </div>
+        <div class="head nut">
+          <p>Fat</p>
+          <p>
+            {{
+              recipe.nutrients.saturated_fat.value +
+                recipe.nutrients.unsaturated_fat.value
+            }}
+            g
+          </p>
+        </div>
+        <div class="head nut sub">
+          <p>Unsaturated fat</p>
+          <p>{{ recipe.nutrients.unsaturated_fat.value }} g</p>
+        </div>
+        <div class="head nut sub">
+          <p>Saturated fat</p>
+          <p>{{ recipe.nutrients.saturated_fat.value }} g</p>
+        </div>
+        <div class="head nut">
+          <p>Carbohydrates</p>
+          <p>{{ recipe.nutrients.carbohydrates.value }} g</p>
+        </div>
+        <div class="head nut">
+          <p>Dietary fiber</p>
+          <p>{{ recipe.nutrients.fibers.value }} g</p>
+        </div>
+        <div class="head nut">
+          <p>Sodium</p>
+          <p>{{ recipe.nutrients.salt.value }} mg</p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!--  Comment Section -->
+    <div id="commentSection" class="comment-wrapper">
+        <h2>Leave a comment</h2>
+  
+        <form [formGroup]="commentFormGroup" class="comment-form">
+          <div class="rating-comment">
+            <h3>Rate this recipe!</h3>
+            <app-rating
+              (ratingOutput)="setRating($event)"
+              [fill]="userRecipeRating"
+              [clickable]="true"
+            ></app-rating>
+          </div>
+          <div class="comment-input">
+            <textarea
+              formControlName="comment"
+              type="text"
+              placeholder="leave your comment"
+            ></textarea>
+            <small *ngIf="commentFormGroup.invalid && isFormSubmitted"
+              >Please check form values!
+            </small>
+            <!-- Add delete icon image-->
+            <svg
+              (click)="resetCommentText()"
+              width="25"
+              height="25"
+              viewBox="0 0 39 39"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <rect width="39" height="39" fill="url(#pattern0)" />
+              <defs>
+                <pattern
+                  id="pattern0"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use xlink:href="#image0" transform="scale(0.0208333)" />
+                </pattern>
+                <image
+                  id="image0"
+                  width="48"
+                  height="48"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACJUlEQVRoge2YvW/TQBiHn7sjY9UFiSIYOjSiVGyt5HYAUkLyR0NVRwgJkBiRGGAEqaIsSQZKFfsYiFFUXXJ3vtdIiHtG34d/j+9svzZkMplMJhPIfFgcTEdFv6v5p4OTvfmwOIgZo0M7zsaH+wp7Zmr7av78+GF8vM1MR0XfmGqisOV8fPQodJwK6TQbH+7rypwDd5eHLqzSz7bO3n5sE/Ym01HRN7UtgXvLQ9+sqYdbL95/8I31CjjCN4hIOMI3BEl4t1DvuncF/HQ07Shbn6dspw3hAWrqW5VvjqAt9GNwvFuZugR2Hc2tVsITPnjOIAGQlZAKDxECICMhGR4iBSBNQjo8tBCAdhJdhIeWAhAn0VV4SBCAMIla2UVX4SFRADwSikssNXDHMVTkRZgsAN6VcCFWiogIQJSEaB0lJgC/JRamfq3c+x0L31H6iVR4iCinQ7ju2Z62mHXtoldriZhA86i0ip0N3W6nFoA3Ebkonue8C7H7IHkFNoa3XAIXjmHJpXhDkoD3Dav106oyj4EvjnYRidZbKKY8mA5O9oypSuC+r28srQTa1DZdSUQLpBRmXUhECUhUlUuJScocqwTfxFIl8fbkzedKq1Pgq6M5+sYOWoEu6vm/9lHf5ceIxNzeLaQWlV7TL/ltuv3y3acN20mjF2vrqj/5Qk40Oz16oLUu+Rd/LTasSCjJ8A0rEr3Q8NF0/nt9VPRjf69nMplM5v/mF/i6x8b172ZWAAAAAElFTkSuQmCC"
+                />
+              </defs>
+            </svg>
+          </div>
+          <button class="comment-btn" (click)="submitCommentForm()" type="button">
+            Post Comment
+          </button>
+        </form>
+        <hr class="comment-divider" />
+  
+        <div class="comments" *ngFor="let comment of comments">
+          <p class="comment-user">{{ comment.username }}</p>
+          <app-rating [fill]="comment.rating" [clickable]="false"></app-rating>
+          <p class="comment-text">{{ comment.text }}</p>
+          <hr />
+        </div>
+      </div>
+    <!-- Disclaimer -->
+    <div class="information">
+      <div class="disclaimer">
+        <div class="head">
+          <h2 style="font-size: 14px" i18n="@@disclaimer-title">Disclaimer</h2>
+          <div (click)="toggleDisclaimer($event)" class="light-icon-button">
+            <svg
+              width="14"
+              height="8"
+              viewBox="0 0 14 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                fill="#2F303B"
+              />
+            </svg>
+          </div>
+        </div>
+        <!-- TODO -->
+        <p *ngIf="showDisclaimer" i18n="@@disclaimer">
+          De foto op de receptkaart kan afwijken van uw resultaat omdat het
+          recept aan uw profiel is aangepast. Ondanks zorgvuldige selectie kan
+          het voorkomen dat er voedingsmiddelen op de receptkaart worden genoemd
+          die niet binnen uw profiel passen of dat er voedingsmiddelen worden
+          genoemd die ongewenste allergenen bevatten. Controleer daarom de
+          ingrediëntenlijst op de receptkaart. Bij vragen kunt u contact opnemen
+          met Verdify.
+        </p>
+      </div>
+    </div>
+    <hr class="small-only" />
+    <!-- recommended recipes -->
+    <div class="information recom-recipes">
+      <div style="margin-bottom: 16px" class="head">
+        <h2 i18n="@@recom-recipes">Recommended recipes</h2>
+        <p role="button" class="clickable-text small-only" i18n="@@all">All</p>
+        <div
+          [routerLink]="['/recommended-recipes']"
+          class="btn secondary-food more big-only"
+          role="button"
+          i18n-aria-label="@@aria-more"
+          aria-label="View more recipes"
+        >
+          <p aria-hidden="true" i18n="@@more">More</p>
+          <svg
+            aria-hidden="true"
+            width="18"
+            height="14"
+            viewBox="0 0 18 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+            <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+      <myCarousel
+        showButtons="false"
+        direction="x"
+        carouselId="recipes1"
+        id="recipes1"
+      >
+        <div class="cards">
+          <!-- <p *ngFor="let r of recipes; let i = index">{{r.title}}</p> -->
+          <app-recipe-card
+            *ngFor="let r of recomRecipes; let i = index"
+            [ngClass]="{
+              'fifth-card': i + 1 == 5,
+              'bigger-than-five': i + 1 > 5
+            }"
+            class="card"
+            [recipe]="r"
+          >
+          </app-recipe-card>
+        </div>
+      </myCarousel>
+      <div
+        [routerLink]="['/recommended-recipes']"
+        class="btn big secondary-food small-only"
+        style="margin-top: 64px"
+        role="button"
+        i18n-aria-label="@@aria-more"
+        aria-label="View more recipes"
+      >
+        <p aria-hidden="true" i18n="@@find-more-recipes">Find more recipes</p>
+        <svg
+          aria-hidden="true"
+          width="18"
+          height="14"
+          viewBox="0 0 18 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+          <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+        </svg>
+      </div>
+    </div>
+
+    <hr class="small-only" />
+    <!-- NOTE: Removed for MVP -->
+    <!-- discover other cooks -->
+    <!-- <div class="information recom-recipes">
+            <h2 class="head social" i18n="@@discover-other-cooks">Discover other cooks</h2>
+            <div class="cook" style="margin-top: 0;">
+                <div class="cook-top">
+                    <app-user-follow></app-user-follow>
+                    <div [routerLink]="['/cook/fleur-pasman']" class="btn secondary-social more" role="button"
+                        i18n-aria-label="@@aria-more" aria-label="View more recipes">
+                        <p aria-hidden="true" i18n="@@more">More</p>
+                        <svg aria-hidden="true" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+                            <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+                        </svg>
+                    </div>
+
+                </div>
+                <myCarousel showButtons="false" direction="x" carouselId="cook1" id="cook1">
+                    <div class="cards">
+                        <app-recipe-card *ngFor="let r of recipes; let i = index"
+                            [ngClass]="{'fifth-card' : i+1 == 5, 'bigger-than-five' : i+1 > 5}" class="card"
+                            [recipe]="r"></app-recipe-card>
+                    </div>
+                </myCarousel>
+            </div>
+            <div class="btn big secondary-social small-only" role="button" style="margin-top: 24px; margin-bottom: 60px"
+                aria-label="Find more cooks" i18n-aria-label="@@find-more-cooks">
+                <p i18n="@@find-more-cooks" aria-hidden="true">Find more cooks</p>
+                <svg aria-hidden="true" width="18" height="14" viewBox="0 0 18 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+                    <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+                </svg>
+
+            </div>
+
+
+        </div> -->
+  </div>
+</main>
+<!-- NOTE: Buttons at bottom of page. Removed bc user tests, Jochem wants to keep -->
+<!-- <div class="fixed-buttons">
+    <div class="btns">
+        <div class="btn primary-food" role="button">
+            <p>Add to list</p>
+            <svg width="40" height="37" viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.38452 13.4922H38.6153L33.9614 35.5714H6.03837L1.38452 13.4922Z" stroke="#2F303B"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M10.072 13.3954L15.773 1" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M29.9277 13.3954L24.2268 1" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M28.1443 21.3361V30.0515" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M20 21.3361V30.0515" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M11.8557 21.3361V30.0515" stroke="#2F303B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div (click)="inCookmode = true;" role="button" class="btn secondary-food">
+            <p>Start cooking</p>
+            <svg width="29" height="22" viewBox="0 0 29 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M18 15.446C21 13.6186 24.2821 12.2757 27.9964 12.4068C28.0438 13.3349 27.6364 15.1911 25.6276 15.1911C24.9959 15.1547 22.6717 15.0948 21.1742 17.4295C20.9058 17.848 19.5 19.7097 17.5 18.4915"
+                    stroke="#5DAB24" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M5 10C5 7.9116 5.87247 7.27514 7.77605 5.52486C9.67963 3.77459 10.2122 3.0884 9.92891 1"
+                    stroke="#5DAB24" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M10 10C10 8.14365 10.698 7.5779 12.2208 6.0221C13.7437 4.4663 14.1697 3.85635 13.9431 2"
+                    stroke="#5DAB24" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M1.98231 17.8074L1 12.8213H18.4633C18.336 13.5747 17.9613 15.6268 17.481 17.8074C17.0008 19.988 15.4618 21.065 14.7524 21.3309H4.76553C2.75725 21.3309 2.07327 18.9819 1.98231 17.8074Z"
+                    stroke="#5DAB24" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14 10C14 8.60773 14.5235 8.18343 15.6656 7.01657C16.8078 5.84972 17.1273 5.39227 16.9573 4"
+                    stroke="#5DAB24" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
+        </div>
+    </div>
+</div> -->
+<app-nav [shadow]="true" page="detail"></app-nav>

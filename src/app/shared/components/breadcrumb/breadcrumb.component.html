@@ -1,0 +1,6 @@
+<!-- <img src="/assets/arrow-simple.svg" alt="back arrow" width="12px" height="8px" role="button"> -->
+<ng-container *ngFor="let bc of breadCrumbs; let i = index">
+    <!-- <a class="text" href="{{bc.url}}">{{bc.label}}</a> -->
+    <p class="text" [routerLink]="[bc.url]">{{bc.label}}</p>
+    <img src="assets/bcArrow.svg" style="margin: 0 4px" alt="">
+</ng-container>

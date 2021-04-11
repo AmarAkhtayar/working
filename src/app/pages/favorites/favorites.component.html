@@ -1,0 +1,16 @@
+<main>
+    <breadcrumbs [breadCrumbs]="breadCrumbs"></breadcrumbs>
+    <!-- <a [routerLink]="['']"><img id="logo" src="assets/logo.svg" alt=""></a> -->
+    <h1 class="title" i18n="@@my-favs">My favourites</h1>
+    <app-search-bar placeholder="Search my favourite recipes" class="grid-margin"></app-search-bar>
+    <div *ngIf="categories" class="categorie-filters">
+        <p [ngClass]="{'active' : c.active}" class="categorie card" (click)="toggleCat(c)" *ngFor="let c of categories;" >{{c.name}}</p>
+        
+    </div>
+    <h2 class="grid-margin" style="margin-top: 48px;" i18n="@@my-rav-recipes">My favourite recipes</h2>
+    
+    <app-recipe-grid [recipes]="recipes"></app-recipe-grid>
+
+</main>
+
+<app-nav [shadow]="true" page="favourites"></app-nav>

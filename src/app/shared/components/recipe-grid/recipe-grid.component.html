@@ -1,0 +1,12 @@
+<div class="recipes-grid grid-margin" *ngIf="recipes">
+    <app-recipe-card [inCarousel]="false" *ngFor="let r of recipes; let i = index" class="card" [recipe]="r">
+    </app-recipe-card>
+
+    <!-- ghosts to fill the flexbox on mobile -->
+    <app-recipe-card [inCarousel]="false" class="card ghost" [recipe]="recipes[0]">
+    </app-recipe-card>
+    <app-recipe-card class="card ghost" [inCarousel]="false" [recipe]="recipes[0]">
+    </app-recipe-card>
+    <app-recipe-card class="card ghost" [inCarousel]="false" [recipe]="recipes[0]">
+    </app-recipe-card>
+</div>

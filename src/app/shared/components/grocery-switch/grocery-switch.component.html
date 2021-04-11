@@ -1,0 +1,5 @@
+<div class="container">
+    <p class="pill" #grocery [routerLink]="['/my-ingredient-list']" [ngClass]="{'active' : page=='groceries'}" i18n="@@grocery-list">
+        Grocery list</p>
+    <p class="pill" #recipe [routerLink]="['/selected-recipes']" [ngClass]="{'active' : page=='recipes'}" i18n="@@my-recipes">My recipes</p>
+</div>

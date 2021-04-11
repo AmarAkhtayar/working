@@ -1,0 +1,72 @@
+<div class="content">
+    <div class="img-wrapper" [ngClass]="{'grow' : !inCarousel}">
+        <a *ngIf='category == true' [routerLink]='["/Category-name"]' i18n-aria-label="@@aria-navig-recipe"
+            aria-label="Go to other recipe">
+            <!-- <a [routerLink]="['/recipe', getUrlTitle(), recipe.id]" i18n-aria-label="@@aria-navig-recipe" -->
+            <!-- aria-label="Go to other recipe"> -->
+            <div class="card-img category"
+                [ngStyle]="{'background-image': 'url(' + recipe.image + ')'}">
+
+                <!-- <div class="shopping-card" *ngIf="isCategory == false"></div> -->
+                <div class="sponsored" *ngIf="isSponsored" i18n="@@sponsored">Sponsored</div>
+            </div>
+        </a>
+        <a *ngIf='category != true' href="#/recipe/{{getUrlTitle()}}/{{recipe.id}}" i18n-aria-label="@@aria-navig-recipe"
+            aria-label="Go to other recipe">
+            <!-- <a [routerLink]="['/recipe', getUrlTitle(), recipe.id]" i18n-aria-label="@@aria-navig-recipe" -->
+            <!-- aria-label="Go to other recipe"> -->
+            <div class="card-img"
+                [ngStyle]="{'background-image': 'url(' + recipe.image + ')'}">
+
+                <!-- <div class="shopping-card" *ngIf="isCategory == false"></div> -->
+                <div class="sponsored" *ngIf="isSponsored" i18n="@@sponsored">Sponsored</div>
+            </div>
+        </a>
+
+
+        
+        <div class="like icon round" (click)="toggleFavorite($event)" *ngIf="category == false"
+            [ngClass]="{'is-sponsored' : isSponsored}">
+            <!-- Heart icon -->
+            <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9.00258 3.40765C8.74393 3.31762 8.59506 3.08939 8.40809 2.91547C7.76973 2.32165 7.04322 1.90077 6.18665 1.724C4.48395 1.3726 3.00401 1.74721 1.86874 3.12363C1.39258 3.70094 1.1252 4.37967 1.03858 5.13641C0.842619 6.84837 1.40579 8.31497 2.44094 9.63691C3.0961 10.4736 3.8836 11.1826 4.68343 11.872C5.94926 12.9632 7.29393 13.9534 8.69183 14.8704C8.99599 15.0699 9.00922 15.07 9.31331 14.8704C10.7109 13.9529 12.0542 12.9614 13.3224 11.8729C14.0602 11.2396 14.7819 10.5833 15.4073 9.835C16.1811 8.90924 16.7557 7.87939 16.9368 6.6663C16.9963 6.10374 17.0499 5.62252 16.9196 4.84833C16.6892 3.63604 16.0158 2.7418 14.965 2.1242C14.4007 1.7925 13.7855 1.63477 13.1265 1.60752C11.6193 1.54521 10.3745 2.09882 9.33554 3.16418C9.24247 3.25961 9.14816 3.35175 9.02475 3.40765"
+                    stroke="#BC2872" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+
+        </div>
+        <div *ngIf="!category" class="add-to-card icon">
+            <p i18n="@@add">Add</p>
+            <!--List icon-->
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 6H10" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 10H10" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 14H10" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.7998 6L4.9 7.1L7 5" stroke="#001C05"/>
+                <path d="M3.7998 10L4.9 11.1L7 9" stroke="#001C05"/>
+                <path d="M3.7998 14L4.9 15.1L7 13" stroke="#001C05"/>
+                <rect x="1" y="1" width="18" height="18" stroke="#001C05" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+
+        </div>
+        <svg class="category-overlay" *ngIf="category == true" width="25" height="26" viewBox="0 0 25 26" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12.5383 15.7692L20.3752 23.6699C21.1028 24.4035 22.2892 24.4063 23.0203 23.6762V23.6762C23.7531 22.9445 23.7484 21.7568 23.0098 21.031L15.3076 13.4615"
+                stroke="#fff" stroke-width="2" />
+            <path
+                d="M8.9267 16.8296C13.3045 16.8296 16.8534 13.2861 16.8534 8.91482C16.8534 4.54359 13.3045 1 8.9267 1C4.5489 1 1 4.54359 1 8.91482C1 13.2861 4.5489 16.8296 8.9267 16.8296Z"
+                stroke="#fff" stroke-width="2" />
+        </svg>
+
+
+    </div>
+    <app-rating *ngIf="category == false" [fill]="recipe.rating" ></app-rating>
+    <p *ngIf="category == false" class="social-trigger" style="line-height: 16px;" i18n="@@time-prep">35 min. preparation</p>
+    <p class="see-all" *ngIf="category == true" i18n="@@see-all">See all</p>
+    <p class="title" *ngIf="!category"[ngClass]="{'bold' : category, 'grow' : !inCarousel}">{{recipe.title}}</p>
+    <p class="title category" *ngIf="category" [ngClass]="{'bold' : category, 'grow' : !inCarousel}">{{recipe.title}}</p>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="cooking-time">
+    <div class="svg">
+        <svg style='transform: rotate(-90deg)' width="34" height="34" viewBox="0 0 34 34" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M29 17C29 23.6274 23.6274 29 17 29C10.3726 29 5 23.6274 5 17C5 10.3726 10.3726 5 17 5C23.6274 5 29 10.3726 29 17Z"
+                stroke="#CBE4B9" stroke-width="6"
+                [ngStyle]="{'stroke-dasharray' : cookTimeStroke + ', 76'}" />
+
+            <path
+                d="M1 17C1 25.8366 8.16344 33 17 33C25.8366 33 33 25.8366 33 17C33 8.16344 25.8366 1 17 1C8.16344 1 1 8.16344 1 17Z"
+                stroke="black" stroke-width="2" />
+            <circle cx="17" cy="17" r="10" fill="white" />
+        </svg>
+        <p>{{minutes}}</p>
+    </div>
+    <p>Total cooking time {{minutes}} min.</p>
+</div>

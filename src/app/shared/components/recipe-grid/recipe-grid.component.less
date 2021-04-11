@@ -1,0 +1,40 @@
+.recipes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 14px 60px 14px;
+  justify-content: space-between;
+  //   &::after {
+  //     content: "";
+  //     flex: auto;
+
+  //   }
+
+  app-recipe-card {
+    margin: 32px 2px;
+    cursor: pointer;
+
+    // &:last-child {
+    //   &::after {
+    //     content: "";
+    //     flex: auto;
+    //   }
+    // }
+  }
+
+  .ghost {
+    opacity: 0;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.grid-margin {
+    margin: 0 16px;
+}
+
+
+@media (max-width: 364px) {
+  .ghost {
+    display: none;
+  }
+}

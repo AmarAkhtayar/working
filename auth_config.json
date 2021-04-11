@@ -1,0 +1,8 @@
+{
+    "domain": "dev-ronu9eda.eu.auth0.com",
+    "clientId": "hd2fRaBpw2EPx0keAu0U2gTGUArhwTr8",
+    "audience": "swapmeals-api-general",
+    "apiUri": "https://swapmeals.verdi.today/recipes/list",
+    "appUri": "http://localhost:4200"
+  }
+  

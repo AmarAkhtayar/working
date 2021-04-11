@@ -1,0 +1,124 @@
+main {
+  max-width: 1032px;
+  margin: 48px auto;
+}
+
+#logo {
+  position: absolute;
+  top: 16px;
+  width: 52px;
+  left: calc(50vw - 26px);
+  pointer-events: all;
+}
+
+breadcrumbs {
+  margin-top: 40px;
+  margin-left: 16px;
+}
+
+.title {
+  margin: 56px 0 12px 16px;
+}
+
+.grid-margin {
+  margin: 0 16px;
+  display: block;
+}
+
+h2 {
+  margin-top: 48px;
+}
+
+
+
+
+.categorie-filters {
+  display: flex;
+  overflow-x: scroll;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+
+  // width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+.categorie {
+  height: 40px;
+  line-height: 40px;
+  min-width: max-content;
+  padding: 0 8px;
+  background-color: khaki;
+  text-align: center;
+  border-radius: 100px;
+  margin-left: 16px;
+  margin-top: 8px;
+  cursor: pointer;
+  text-transform: capitalize;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;  //no ugly select background
+
+
+  &.active {
+    background-color: black;
+    color: white;
+  }
+
+  &:last-child {
+    position: relative;
+
+    &:after {
+      content: '';
+      width: calc(100% + 16px);
+      height: 10px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+}
+
+// app-nav {
+//   box-shadow: 0px -2px 32px rgba(0, 0, 0, 0.15);
+//   height: 50px;
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+// }
+
+@media (min-width: 600px) {
+  // app-nav {
+  //   height: 0;
+  // }
+
+  main {
+    margin-top: 64px;
+  }
+
+  #logo {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .categorie-filters {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    // justify-content: space-around;
+  }
+}
+
+@media (min-width: 1036px) {
+  .title {
+    margin: 68px 0 24px 16px;
+  }
+}

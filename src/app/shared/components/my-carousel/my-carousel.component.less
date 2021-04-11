@@ -1,0 +1,262 @@
+.keyframes(@name; @arguments) {
+  @-moz-keyframes @name {
+    @arguments();
+  }
+
+  @-webkit-keyframes @name {
+    @arguments();
+  }
+
+  @keyframes @name {
+    @arguments();
+  }
+}
+
+.animation(@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
+}
+
+myCarousel {
+  position: relative;
+  width: 100vw;
+  overflow-x: scroll;
+  display: block;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  padding: 0 0px;
+  // margin: 0 -4px 0 -20px;
+  margin-left: -16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cards {
+    display: flex;
+    padding: 0;
+    margin-left: 12px;
+
+    .card {
+      display: block;
+      // background: #BC2872;
+      margin: 0 4px;
+      width: 100px;
+      flex-shrink: 0;
+      cursor: pointer;
+
+      img {
+        width: 100px;
+        height: 140px;
+        pointer-events: all;
+      }
+
+      &:last-child {
+        width: 116px;
+
+        img {
+          width: 100px;
+          height: 140px;
+        }
+      }
+
+
+    }
+
+
+  }
+
+  .steps {
+    padding: 0;
+    padding-top: 152px;
+    overflow: hidden;
+    height: 100vh;
+    box-sizing: border-box;
+    pointer-events: none;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 16px;
+      // display: block;
+      height: 200px;
+      width: 100%;
+      background: none;
+      border-radius: 4px;
+      margin-bottom: 120px;
+      z-index: -1;
+      scroll-margin: 120px; //margin from top
+      opacity: 0.6;
+    }
+  }
+
+  .carousel-animation {
+    .keyframes(bounce; {
+        0% {
+          transform: translateX(0);
+        }
+
+        20% {
+          transform: translateX(-10px);
+        }
+
+        40% {
+          transform: translateX(-15px);
+        }
+
+        60% {
+          transform: translateX(-10px);
+        }
+
+        80% {
+          transform: translateX(-5px);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+    );
+
+    .animation(bounce 0.3s linear 2 alternate)
+  }
+
+  button {
+    font-size: 32px;
+    opacity: .5;
+    color: #FFF;
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: 25px;
+    outline: none;
+
+    display: none;
+  }
+
+  .controls {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 56px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .up {
+      transform: rotate(180deg);
+    }
+
+    div {
+      width: 56px;
+      height: 56px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url(/assets/arrow-focus.svg);
+      cursor: pointer;
+    }
+  }
+
+  button:hover {
+    opacity: 1
+  }
+
+  button.prev {
+    left: 0;
+    /* height: 10px;
+    width: 25px;
+    background: white; */
+  }
+
+  button.next {
+    right: 0
+  }
+
+  button.prev::after {
+    content: '\25C0';
+    color: black;
+  }
+
+  button.next::after {
+    content: '\25BA';
+    color: black;
+  }
+
+
+}
+
+@media (min-width: 560px) {
+  myCarousel {
+    margin-left: calc(-50vw + 280px - 16px);
+
+    .cards {
+      margin-left: ~"max(12px, calc(50vw - 268px))"; //escape less compiler to use math function from css
+
+      .card {
+        width: 150px;
+
+        &:last-child {
+          width: calc(150px + 50vw - 280px + 16px);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 752px) {
+  myCarousel {
+    width: calc(100vw + 20px);
+    margin-left: calc(-50vw + 376px - 20px - 96px);
+
+    .cards {
+      margin: 0 calc(50vw - 376px + 12px + 20px);
+
+
+      .card {
+        width: 194px;
+
+        &:last-child {
+          width: calc(194px + 50vw - 376px + 12px);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1036px) {
+  myCarousel {
+    overflow-x: hidden;
+    min-width: 1004px;
+    max-width: 1004px;
+
+    margin-left: 0;
+
+    .cards {
+
+      margin: 0 0px;
+
+      .card {
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &.fifth-card {
+          margin-right: 0;
+          margin-left: 6px;
+        }
+
+      }
+
+      .bigger-than-five {
+        display: none;
+      }
+    }
+  }
+}

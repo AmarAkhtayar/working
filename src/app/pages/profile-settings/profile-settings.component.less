@@ -1,0 +1,137 @@
+main {
+  padding-bottom: 80px;
+  max-width: 1004px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.my-profile {
+  // display: flex;
+  // justify-content: center;
+  margin: 40px auto;
+  position: relative;
+  width: min-content;
+
+  img {
+    display: block;
+  }
+
+  .svg-box {
+    background-color: darkgreen;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    padding: 11px 12px 10px 11px; //svg looks centered to the eye
+    position: absolute;
+    bottom: 0;
+    // right: 442px; //1004/2 - 60px
+    right: 0;
+  }
+}
+
+hr {
+  margin: 0px 0;
+}
+
+.options {
+
+  .option {
+    padding: 32px 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-top: 1px solid #F3F3F3;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #f3f3f3;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid #f3f3f3;
+      // background: pink;
+    }
+
+    .info {
+      border: 1px solid #2F303B;
+      color: #2F303B;
+      font-weight: 300;
+      cursor: auto;
+      margin-left: 4px;
+    }
+
+    .start-icon {
+      margin-right: 24px;
+      width: 24px;
+      height: 24px;
+      opacity: 1;
+    }
+
+    .arrow {
+      margin-left: auto;
+      transform: rotate(180deg);
+    }
+
+  }
+}
+
+.social-media {
+  margin: 40px 16px;
+
+  p {
+    margin-bottom: 24px;
+  }
+
+  svg {
+    margin-right: 16px;
+    cursor: pointer;
+    height: 32px;
+  }
+}
+
+.select-language {
+  margin: 40px 16px;
+  
+  p {
+    margin-bottom: 24px;
+    text-align: right;
+  }
+
+  .flags {
+    display: flex;
+    margin: 0px -8px;
+    .flag {
+      margin: 0 8px;
+
+      svg {
+        width: auto;
+        height: 32px;
+      }
+    }
+  }
+}
+
+// app-nav {
+//   box-shadow: 0px -2px 32px rgba(0, 0, 0, 0.15);
+//   height: 50px;
+//   position: fixed;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+// }
+
+@media (min-width: 600px) {
+  // app-nav {
+  //   height: 0;
+  // }
+
+  .my-profile {
+    margin-top: 104px;
+  }
+}

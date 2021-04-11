@@ -1,0 +1,115 @@
+
+.slides-container {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    overflow: hidden;
+    .position-indicators {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 12px;
+        bottom: 16px;
+        left: 0;
+        display: flex;
+        max-width: 664px;
+        @media (min-width: 664px) {
+            left: calc(50% - 332px);
+        }
+
+        .indic {
+            height: 2px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 2px;
+            margin: 0 4px;
+            opacity: 48%;
+            transition: 0.5s;
+            &.active {
+                opacity: 100%;
+            }
+        }
+    }
+    .controls {
+        display: flex;
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        @media (min-width: 664px) {
+            right: calc(50% - 332px + 16px);
+        }
+        .prev {
+
+        }
+        .next {
+            transform: rotate(180deg);
+            margin-left: 8px;
+        }
+
+    }
+}
+
+.slide {
+  min-width: 100vw;
+  max-width: 100vw;
+  // height: 457px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: 0.5s;
+  @media (min-width: 600px) {
+    padding-top: 80px;
+  }
+
+  .black-mist-bottom {
+    position: absolute;
+    width: 100%;
+    height: 101px;
+    left: 0px;
+    bottom: 0px;
+    background: linear-gradient(180deg, rgba(0, 28, 5, 0) 0%, #001C05 100%);
+  }
+
+  &.green {
+    background-color: #85C44E;
+  }
+  &.pink {
+      background-color: #F7A79F;
+  }
+  &.orange {
+      background-color: #F98D16;
+  }
+
+  .logo {
+    margin-top: 32px;
+    width: 160px;
+    height: 35px;
+    @media (min-width: 600px) {
+      // margin-top: 96px;
+      display: none;
+    }
+  }
+
+  .txt {
+    display: flex;
+    margin-top: 32px;
+
+    .indicator {
+      color: #001C05;
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+
+    .description {
+      color: #fff;
+      white-space: nowrap;
+    }
+  }
+
+  .exp {
+    margin: 16px 0 24px 0;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}

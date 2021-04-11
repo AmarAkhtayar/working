@@ -1,0 +1,244 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+svg, path {
+  pointer-events: none;
+}
+
+.img-wrapper {
+  width: 100px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 4px;
+  position: relative;
+  margin-bottom: 8px;
+
+ 
+
+  .add-to-card {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: min-content;
+    border-radius: 4px;
+    width: 76px;
+    height: 28px;
+    transition: 0.3s;
+    background-color: #85C44E;
+    padding: 0;
+
+    svg {
+      path {
+        stroke: #001C05;
+      }
+    }
+
+    p {
+      color: #001C05;
+      font-size: 12px;
+      margin-right: 4px;
+      font-family: 'Degular', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    // margin: -5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    &.category {
+      filter: blur(3px);
+      -webkit-filter: blur(3px);
+    }
+
+
+    .shopping-card {
+      bottom: 4px;
+      right: 4px;
+      position: absolute;
+      width: 64px;
+      height: 32px;
+      border-radius: 4px;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .sponsored {
+      width: 84px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      font-size: 12px;
+      background: white;
+      border-radius: 100px;
+      position: absolute;
+      padding: 0 2px;
+      top: 6px;
+      left: 6px;
+
+      @media(min-width: 560px) {
+        top: 8px;
+        left: 8px;
+      }
+    }
+  }
+}
+
+.like {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  background-color: white;
+  pointer-events: all;
+  cursor: pointer;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  transition: 0.3s;
+
+  // &:hover {
+  //   transform: scale(1.2);
+  //   box-shadow: 0px -2px 32px rgba(0, 0, 0, 0.15);
+
+  // }
+
+  svg {
+    margin-top: 1px;
+    pointer-events: none;
+  }
+
+
+  &.is-sponsored {
+    top: 34px;
+
+    @media(min-width: 560px) {
+      top: 8px;
+    }
+  }
+}
+
+
+app-rating {
+  transform: scale(0.6);
+  display: flex;
+  align-items: flex-start;
+  width: 133px;
+  height: 23px;
+  margin-left: -27px;
+  margin-top: -3px;
+  // opacity: 0.4;
+}
+
+.social-trigger {
+  color: #407839;
+  font-size: 12px;
+  margin: 4px 0 6px 0;
+  font-weight: 600;
+  line-height: 16px;
+  width: 100px;
+  overflow-wrap: break-word;
+  color: #407839;
+}
+
+.title {
+  font-size: 14px;
+  width: 100px;
+  font-weight: 600;
+  line-height: 18px;
+  &.category {
+    margin-top: 2px;
+  }
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.category-overlay {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 10px);
+  width: 28px;
+  height: 28px;
+
+}
+
+@media (min-width: 560px) {
+  .img-wrapper {
+    width: 150px;
+    height: 210px;
+  }
+
+  .title {
+    width: 150px;
+  }
+  .see-all {
+    opacity: 0;
+    line-height: 8px;
+  }
+  .social-trigger {
+    width: 150px;
+  }
+
+
+}
+
+@media (min-width: 752px) {
+  .img-wrapper {
+    width: 194px;
+    height: 270px;
+
+    .add-to-card {
+      width: 162px;
+      bottom: 16px;
+      left: 16px;
+    }
+  }
+
+  app-rating {
+    transform: scale(1);
+    margin-left: 0;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+  .social-trigger {
+    margin-bottom: 12px;
+  }
+
+
+  .title {
+    width: 194px;
+  }
+
+}
+
+@media (max-width: 364px) {
+  .img-wrapper {
+    &.grow {
+      width: 150px;
+      height: 210px;
+    }
+  }
+
+  .title {
+    &.grow {
+      width: 150px;
+    }
+  }
+  .social-trigger {
+    width: 150px;
+  }
+}

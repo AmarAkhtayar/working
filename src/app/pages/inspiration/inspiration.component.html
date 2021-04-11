@@ -1,0 +1,101 @@
+<main>
+
+    <app-info-slideshow></app-info-slideshow>
+    <div class="content">
+        
+        <!-- <h2 class="welcome">Welcome</h2> -->
+        <h1 class="page-title" i18n="@@find-del-healthy-recipes">Find delicious and healthy recipes</h1>
+
+        <div class="carousel">
+            <div class="head grid-margin" *ngIf="true">
+                <h2 i18n="@@tips-and-tricks">Tips & tricks</h2>
+                <p [routerLink]="['/tips-and-tricks']" class="clickable-text not-desktop" i18n="@@more">More</p>
+                <div class="btn secondary-food desktop" [routerLink]="['/tips-and-tricks']">
+                    <p i18n="@@more">More</p>
+                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+                        <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+                    </svg>
+                </div>
+            </div>
+            <myCarousel carouselId="trending" id="trending">
+                <div class="cards trendings" *ngIf="trendingRecipes">
+                    <div class="card trending-card" *ngFor="let recipe of trendingRecipes; let i = index"
+                        [ngClass]="{'fifth-card' : i+1 == 3, 'bigger-than-five' : i+1 > 3}" [ngStyle]="{'background-image': 'url('+ 'assets/big-food-1.png' + ')'}">
+                        <!-- <img src="assets/big-food-1.png" alt=""> -->
+                        <div class="black-mist"></div>
+                        <p class="card-title">Test content here</p>
+                    </div>
+                </div>
+            </myCarousel>
+        </div>
+
+        <hr>
+        <div class="carousel" *ngIf="recipes">
+            <div class="head grid-margin">
+                <h2 i18n="@@world-cuisines">World Cuisines</h2>
+                <p [routerLink]="['/world-cuisines']" class="clickable-text not-desktop" i18n="@@more">More</p>
+                <div [routerLink]="['/world-cuisines']" class="btn secondary-food desktop">
+                    <p i18n="@@more">More</p>
+                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+                        <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+                    </svg>
+                </div>
+            </div>
+
+            <myCarousel carouselId="world-recipes" id="world-recipes">
+                <div class="cards">
+                    <app-recipe-card [category]="true" *ngFor="let r of recipes; let i = index"
+                        [ngClass]="{'fifth-card' : i+1 == 5, 'bigger-than-five' : i+1 > 5}" class="card" [recipe]="r">
+                    </app-recipe-card>
+                </div>
+            </myCarousel>
+        </div>
+        <hr>
+        <div class="carousel">
+            <div class="head grid-margin">
+                <!-- TODO: i18n -->
+                <h2>Last used by you</h2>
+                <p [routerLink]="['/last-used-by-you']" class="clickable-text not-desktop">More</p>
+                <div [routerLink]="['/last-used-by-you']" class="btn secondary-food desktop">
+                    <p i18n="@@more">More</p>
+                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+                        <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+                    </svg>
+                </div>
+            </div>
+            <myCarousel *ngIf="recipes" carouselId="last-used" id="last-used">
+                <div class="cards">
+                    <app-recipe-card *ngFor="let r of recipes; let i = index"
+                        [ngClass]="{'fifth-card' : i+1 == 5, 'bigger-than-five' : i+1 > 5}" class="card" [recipe]="r">
+                    </app-recipe-card>
+                </div>
+            </myCarousel>
+        </div>
+        <hr>
+        <!-- NOTE: removed for MVP -->
+        <!-- <div class="head grid-margin">
+            <app-user-follow class=""></app-user-follow>
+            <div [routerLink]="['/cook/fleur-pasman']"  class="btn secondary-social desktop">
+                <p [routerLink]="['/cook/fleur-pasman']" >More</p>
+                <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 13L16.5 6.85032L11 1" stroke-width="2" />
+                    <path d="M0 7.1875L16.5 7.1875" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
+        <div class="carousel" *ngIf="recipes">
+            <myCarousel carouselId="cook" id="cook">
+                <div class="cards">
+                    <app-recipe-card *ngFor="let r of recipes; let i = index"
+                        [ngClass]="{'fifth-card' : i+1 == 5, 'bigger-than-five' : i+1 > 5}" class="card" [recipe]="r">
+                    </app-recipe-card>
+                </div>
+            </myCarousel>
+        </div> -->
+    </div>
+</main>
+
+<app-nav [shadow]="true" page="inspiration"></app-nav>

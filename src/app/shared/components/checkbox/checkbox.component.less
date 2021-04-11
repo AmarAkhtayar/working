@@ -1,0 +1,107 @@
+/// CHECKBOX
+.checker {
+  display: flex;
+  margin-right: 8px;
+  display: flex;
+
+  .checkboxbox {
+    margin-top: 1px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background: none;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    margin-right: 16px;
+    background-color: white;
+    display: flex;
+
+    &.green {
+      border: 2px solid #85C44E;
+    }
+
+
+    .checkbox {
+      cursor: pointer;
+      opacity: 0;
+      // margin-right: 16px;
+      width: 24px;
+      height: 24px;
+      box-sizing: border-box;
+
+      &.greenbox {
+        border: 1px solid #85C44E;
+      }
+
+      &:checked {
+        ~.checked {
+          display: flex;
+        }
+
+      }
+    }
+
+    .checked {
+      box-sizing: border-box;
+      border-radius: 2px;
+      top: -2px;
+      left: -2px;
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      display: none;
+      pointer-events: none;
+      justify-content: center;
+      align-items: center;
+
+      &.greencheck {
+        background-color: #85C44E;
+        border: 1px solid #85C44E;
+      }
+
+    }
+  }
+}
+
+label {
+  font-size: 16px;
+  line-height: 24px;
+  display: block;
+  width: max-content;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow: hidden;
+
+  // &.swap {
+  //   left: 56px;
+  // }
+
+  &.spacing {
+    // left: 104px;
+    margin-left: 64px;
+    width: calc(100% - 104px);
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'degular', serif;
+    margin-top: -8px;
+    @media (min-width: 696px) {
+      margin-left: 208px;
+      font-size: 24px;
+      line-height: 36px;
+      
+    }
+  }
+  &.smaller {
+    font-size: 14px;
+    margin-left: -8px;
+  }
+}
+
+.swap-icon {
+  // position: absolute;
+  // left: 32px;
+  // top: 0px;
+  height: 24px;
+  margin-right: 8px;
+}
+

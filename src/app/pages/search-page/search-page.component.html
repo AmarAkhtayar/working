@@ -1,0 +1,77 @@
+<main>
+        <!-- <img [routerLink]="['/inspiration']" id="logo" src="assets/logo-swapmeals-bg.svg" alt=""> -->
+    <div class="content">
+        <breadcrumbs [breadCrumbs]="breadCrumbs" class="desktop grid-margin"></breadcrumbs>
+        <!-- <div role="button" class="btn secondary-food preference-button">
+            <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 10L18 10" stroke="#5DAB24"/>
+                <path d="M1 17H13" stroke="#5DAB24"/>
+                <path d="M1 3H13" stroke="#5DAB24"/>
+                <circle cx="3" cy="10" r="2.5" stroke="#5DAB24"/>
+                <circle cx="16" cy="17" r="2.5" stroke="#5DAB24"/>
+                <circle cx="16" cy="3" r="2.5" stroke="#5DAB24"/>
+                </svg>
+            <p>Preferences</p>
+        </div> -->
+        <h1 class="page-title grid-margin" i18n="@@search">Search</h1>
+        <app-search-bar placeholder="Find recipes, ingredients or cooks" i18n-placeholder="@@sb-placeholder" class="grid-margin"></app-search-bar>
+        <h2 class="grid-margin" i18n="@@your-top-cat">Your top categories</h2>
+        <div class="categories grid-margin">
+            <div class="category">
+                <p>name</p>
+            </div>
+            <div class="category">
+                <p>name</p>
+            </div>
+            <div class="category">
+                <p>name</p>
+            </div>
+            <div class="category">
+                <p>name</p>
+            </div>
+        </div>
+        <hr class="desktop">
+        <h2 class="not-desktop grid-margin" i18n="@@dif-courses">Different courses</h2>
+        <div class="filters">
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+        </div>
+        <div class="filters">
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+            <div class="filter">Filter</div>
+        </div>
+        <hr class="desktop  scd">
+        <h2 class="grid-margin" i18n="@@browse all">Browse all</h2>
+        <div class="categories grid-margin">
+            <div class="category">
+                <p>name</p>
+            </div>
+            <div class="category">
+                <p>name</p>
+            </div>
+            <div class="category">
+                <p>name</p>
+            </div>
+            <div class="category">
+                <p>name</p>
+            </div>
+        </div>
+    </div>
+</main>
+<app-nav [shadow]="true" page="search"></app-nav>

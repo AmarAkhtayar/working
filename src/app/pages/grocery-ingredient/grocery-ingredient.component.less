@@ -1,0 +1,330 @@
+.grid-margin {
+  margin: 0 16px;
+  display: block;
+}
+
+.popup {
+  background: rgba(17, 17, 17, 0.16);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+  // display: flex;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    background-color: white;
+    width: 345px;
+    // height: 262px;
+    display: flex;
+    // justify-content: center;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 24px;
+    box-sizing: border-box;
+
+    .close {
+      align-self: flex-end;
+      margin-top: -8px;
+      margin-right: -8px;
+      cursor: pointer;
+      svg {
+        path{
+          pointer-events: none;
+        }
+      }
+    }
+
+    .popup-title {
+      // font-size: 16px;
+      // font-weight: 700;
+      // margin: 4px 20px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    p {
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      // margin: 16px;
+      margin-bottom: 0;
+
+      &.ah {
+        background-color: #00A0E2;
+        margin-top: 36px;
+      }
+      img {
+        margin-left: 12px;
+      }
+      &.jumbo {
+        background-color: #Fc0;
+        margin-top: 16px;
+      }
+    }
+  }
+}
+
+#logo {
+  margin-top: 24px;
+}
+
+.grid {
+  max-width: 696px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+main {
+  margin: 88px auto 128px auto;
+
+  .title {
+    margin-bottom: 32px;
+  }
+
+
+}
+
+app-grocery-switch {
+  max-width: 380px;
+  margin: 0px auto 40px auto;
+  display: block;
+  padding: 0 16px;
+}
+
+.clickable-text {
+
+  // color: #5dab24;
+  // opacity: 1;
+  // font-size: 14px;
+  @media (min-width: 1004px) {
+    margin-right: 2px;
+
+    &.grid-margin {
+      margin-right: 18px;
+    }
+  }
+}
+
+.fixed-button {
+  padding: 12px 16px;
+  background-color: white;
+  box-shadow: 0px -2px 32px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  width: 100%;
+  bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  .btn {
+    box-sizing: border-box;
+    height: 48px;
+    width: 100%;
+    line-height: 48px;
+
+  }
+}
+
+.category {
+  height: 56px;
+  background-color: rgb(29, 29, 151);
+  border: 0.5px solid white;
+  // padding-left: 16px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+
+  .category-bg {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 26%;
+    z-index: 0;
+  }
+
+  // @media (min-width: 1004px) {
+  //     margin-left: 16px;
+  //     margin-right: 16px;
+  // }
+
+  // margin-top: 32px;
+  p {
+    font-size: 16px;
+    line-height: 56px;
+    color: white;
+    margin-left: 16px;
+
+    b {
+      font-size: 16px;
+      line-height: 56px;
+      color: white;
+    }
+  }
+
+  svg {
+    padding: 0 16px;
+  }
+}
+
+.ingredients {
+  margin: 32px auto;
+
+  hr {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  .ingredient {
+    .head {
+      margin: 0 16px;
+    }
+
+    .ing-info {
+      opacity: 1;
+      margin-top: 16px;
+      margin-left: 48px;
+
+      .amount {
+        width: max-content;
+        margin-left: 8px;
+
+        p {
+          font-size: 16px;
+        }
+
+        .clickable-text {
+          margin-left: 16px;
+          // font-size: 14px;
+        }
+      }
+
+      .other-recipes {
+        margin-top: 16px;
+        margin-bottom: 32px;
+        list-style-position: inside;
+
+        p {
+          font-size: 14px;
+          margin-left: 8px;
+        }
+      }
+    }
+
+  }
+}
+
+.top-buttons {
+  // margin-bottom: 32px;
+  margin: 0 16px 32px 16px;
+  display: none;
+
+  .btn {
+    width: 49%;
+  }
+}
+
+.fixed-banner {
+  height: 110px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  box-shadow: 0px -2px 8px rgba(51, 51, 51, 0.16);
+  align-items: flex-start;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  justify-content: space-between;
+
+  .btn {
+    width: 223px;
+    height: 48px;
+    box-sizing: border-box;
+  }
+
+  p {
+    line-height: 48px;
+
+    &.long-txt {
+      display: none;
+    }
+
+    @media(min-width: 540px) {
+      &.short-txt {
+        display: none;
+      }
+
+      &.long-txt {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-bottom: 136px;
+  }
+}
+
+.from-600 {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  main {
+    margin-top: 104px;
+  }
+
+  app-grocery-switch {
+    width: 380px;
+    margin: 48px auto 60px auto;
+    padding: 0;
+  }
+
+  .small {
+    display: none;
+  }
+
+  .from-600 {
+    display: block;
+
+    &.head {
+      display: flex;
+    }
+  }
+}
+
+@media (min-width: 696px) {
+  .fixed-banner {
+    p {
+      margin-left: calc(50% - 332px);
+    }
+
+    .btn {
+      margin-right: calc(50% - 332px);
+    }
+  }
+}
+
+@media (min-width: 1036px) {
+  main {
+    margin-top: 0;
+  }
+
+  breadcrumbs {
+    margin-left: calc(50% - 498px);
+    margin-top: 104px;
+  }
+}

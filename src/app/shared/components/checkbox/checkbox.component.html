@@ -1,0 +1,19 @@
+<div class="checker">
+    
+    <div class="checkboxbox green">
+        <input name="{{uniqueId}}" id="{{uniqueId}}" [checked]="!isSwap" class="checkbox greenbox" type="checkbox">  
+        <div class="checked greencheck">
+            <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4 8L11 1" stroke="#001C05" stroke-width="2"/>
+                </svg>
+        </div>
+    </div>
+    <!-- <svg class="swap-icon" *ngIf="isSwap" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.45109 8.87481C6.45109 5.91791 13.9483 5.64573 13.9898 5.64573H17.4478V7.75308L21.4413 4.14873L17.4519 0V2.18159C12.3583 2.23107 6.45109 3.14247 6.45109 8.56138V8.87481Z" 
+        fill="#3E6243"/>
+        <path d="M14.9902 9.125C14.9902 12.0819 7.49303 12.3541 7.45152 12.3541H3.99352V10.2467L0 13.8511L3.99352 17.9998V15.5048C11.3911 15.4471 14.9902 13.3562 14.9902 9.125Z" 
+        fill="#3E6243"/>
+        </svg> -->
+    <label [ngClass]="{'spacing' : isCard, 'smaller' : isSmaller}" for="{{uniqueId}}">{{value}}</label>
+    <!-- <label for="test">Test</label> -->
+</div>

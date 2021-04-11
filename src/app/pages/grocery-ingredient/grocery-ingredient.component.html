@@ -1,0 +1,138 @@
+<div class="popup" (click)="closeSupermarketPopup($event)" id="superPopup">
+    <div class="box">
+        <div class="close">
+            <svg id='closePopup' width="18" height="18" viewBox="0 0 18 18" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 1L9 9.19958L17 17" stroke-width="2" stroke="#182D09" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M1 17L9 8.80042L1 1" stroke-width="2" stroke="#182D09" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <h1 class="popup-title" i18n="@@choose-fav-groc">Choose your favorite grocery store</h1>
+        <div class="btn big ah">
+            <p i18n="@@buy-at-ah">Buy at ah.nl</p>
+            <img width="29px" heigth="30px" loading="lazy" src="assets/ah.png" alt="Logo albertheijn">
+        </div>
+    </div>
+</div>
+
+
+<breadcrumbs [breadCrumbs]="breadCrumbs" class=""></breadcrumbs>
+<main>
+    <app-grocery-switch page="groceries" class=""></app-grocery-switch>
+    <div class="head title grid">
+        <h1 class="grid-margin" i18n="@@my-groc-list">My grocery list</h1>
+        <p class="clickable-text grid-margin" i18n="@@clear-entire-list">Clear entire list</p>
+    </div>
+    <!-- <div class="head top-buttons from-600">
+        <div class="btn big secondary-food" [routerLink]="['/selected-recipes']">My recipes</div>
+        <div class="btn big primary-food" (click)="openSupermarketPopup()">Buy ingredients (x)</div>
+    </div> -->
+    <div class="category" (click)="toggleIngs('vegetables')" style="background-image: url('assets/exfood2.png');" id="veggies">
+        <div class="category-bg"></div>
+        <div class="grid head">
+            <p class=""><b i18n="@@vegetables">Vegetables</b> (x)</p>
+            <svg id="arrow-vegetables" class=" turn" width="14" height="8" viewBox="0 0 14 8" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                    fill="#fff" />
+            </svg>
+        </div>
+        
+    </div>
+    <div class="ingredients grid" id="ing-vegetables">
+        <div class="ingredient">
+            <div class="head">
+                <app-checkbox id='cb-1' (change)="toggleIng(1)" value="Coconut Milk"></app-checkbox>
+                <p class="clickable-text" i18n="@@delete">Delete</p>
+            </div>
+            <div class="ing-info grid-margin" id="ing-1">
+                <div class="amount head">
+                    <p>250 ml</p>
+                    <p class="clickable-text" (click)="editAmount()" i18n="@@edit-amount">Edit amount</p>
+                </div>
+                <!-- <ul>
+                    <li>Title of a recipe</li>
+                </ul> -->
+                <div class="other-recipes">
+                    <p i18n="@@recipe-colon">Recipe: <span [routerLink]="['/recipe/Espresso-Mini-Muffins-with-Chocolate-Ganache/00563295f7']" class="clickable-text">Miso coconut noodle soup</span></p>
+                </div>
+            </div>
+            <!-- <hr style="background: black;"> -->
+        </div>
+        <!-- <hr> -->
+        <div class="ingredient">
+            <div class="head">
+                <app-checkbox id="test" value="Coconut Milk"></app-checkbox>
+                <p class="clickable-text" i18n="@@delete">Delete</p>
+            </div>
+            <div class="ing-info grid-margin">
+                <div class="amount head">
+                    <p>250 ml</p>
+                    <p class="clickable-text" i18n="@@edit-amount">Edit amount</p>
+                </div>
+                <div class="other-recipes">
+                    <p>Recept: <b>Miso coconut noodle soup</b></p>
+                </div>
+            </div>
+        </div>
+        <!-- <hr> -->
+    </div>
+    <div class="category" style="background-image: url('assets/exfood3.png');" (click)="toggleIngs('oils')" id="oils">
+        <div class="grid head">
+            <p class="grid-margin"><b i18n="@@oils">Oils</b> (x)</p>
+            <svg id="arrow-oils" class="grid-margin turn" width="14" height="8" viewBox="0 0 14 8" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                    fill="#fff" />
+            </svg>
+        </div>
+    </div>
+    <div class="ingredients grid" id='ing-oils'>
+        <div class="ingredient">
+            <div class="head">
+                <app-checkbox value="Coconut Milk"></app-checkbox>
+                <p class="clickable-text">Delete</p>
+            </div>
+            <div class="ing-info grid-margin">
+                <div class="amount head">
+                    <p>250 ml</p>
+                    <p class="clickable-text">Edit amount</p>
+                </div>
+                <div class="other-recipes">
+                    <p>Recept: <b>Miso coconut noodle soup</b></p>
+                </div>
+            </div>
+            <!-- <hr> -->
+        </div>
+        <!-- <hr> -->
+        <div class="ingredient">
+            <div class="head">
+                <app-checkbox value="Coconut Milk"></app-checkbox>
+                <p class="clickable-text">Delete</p>
+            </div>
+            <div class="ing-info grid-margin">
+                <div class="amount head">
+                    <p>250 ml</p>
+                    <p class="clickable-text">Edit amount</p>
+                </div>
+                <div class="other-recipes">
+                    <p>Recept: <b>Miso coconut noodle soup</b></p>
+                </div>
+            </div>
+        </div>
+        <!-- <hr> -->
+    </div>
+
+</main>
+<div class="fixed-banner from-600 head">
+    <p class="short-txt" i18n="@@grocerylist-am-ingredients" >Grocery list: <b>10 ingredients</b></p>
+    <p class="long-txt" i18n="@@your-groc-list-am-ingredients">Your grocery list contains: <b>10 ingredients</b></p>
+    <div class="btn primary-food" (click)="openSupermarketPopup()" i18n="@@order-ingredients">Order ingredients</div>
+</div>
+<div class="fixed-button small">
+    <!-- <div class="btn secondary-food" [routerLink]="['/selected-recipes']">My recipes</div> -->
+    <div class="btn primary-food" (click)="openSupermarketPopup()" i18n="@@buy-ingredients">Buy ingredients</div>
+</div>
+<app-nav page="card"></app-nav>

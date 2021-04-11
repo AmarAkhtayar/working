@@ -1,0 +1,136 @@
+.cookmode {
+  background: #fff;
+  overflow: auto;
+  
+
+  height: 100vh;
+
+  &.pop-up {
+    display: block;
+  }
+
+  .cookmode-header {
+    display: flex;
+    justify-content: center;
+    background-color: #F5C55B;
+
+    .img-cookmode {
+
+      // max-height: 500px;
+      position: relative;
+
+      img {
+        width: 100%;
+        max-width: 494px;
+        height: auto;
+        display: block;
+
+      }
+
+      .black-mist {
+        background: linear-gradient(180deg, rgba(0, 28, 5, 0) 76.56%, rgba(0, 28, 5, 0.54) 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      p {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'degular', serif;
+      }
+    }
+
+    .close {
+        
+box-shadow: 0px 0px 40px rgba(17, 17, 17, 0.16);
+        position: absolute;
+    top: 16px;
+    right: 16px;
+      width: 40px;
+      height: 40px;
+      z-index: 1;
+      background-color: white;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      @media (min-width: 1020px) {
+        right: calc(50% - 500px);
+      }
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      @media (min-width: 1020px) {
+        right: calc(50% - 500px);
+      }
+    }
+  }
+
+
+  .cookmode-content {
+    max-width: 494px;
+    margin: 0 auto;
+    position: relative;
+    padding: 16px;
+    padding-bottom: 80px;
+
+    h1 {
+      margin-top: 48px;
+      margin-bottom: -32px;
+      line-height: 36px;
+    }
+
+    .back {
+      //img button going back
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .cross {
+      width: 56px;
+      height: 56px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+    }
+
+    .steps {
+      .card {
+        padding: 64px 0px;
+
+        &:last-child {
+          padding-bottom: 16px;
+        }
+      }
+    }
+
+    .photo-trigger {
+      // margin: 16px 0;
+      margin-top: 16px;
+      margin-bottom: 120px;
+    }
+  }
+}
+
+@media (min-width: 1036px) {
+
+  breadcrumbs {
+    margin-top: 40px;
+    margin-bottom: 56px;
+    margin-left: calc(50% - 500px);
+  }
+}
